@@ -4,12 +4,10 @@ import com.biblioteca.negocio.TamanhoInvalidoException;
 
 public class Livro extends Acervo{
     private String isbn;
-    private String editora;
 
-    public Livro(String titulo, int codigo, boolean disponivel, int quantidade, String isbn, String editora){
+    public Livro(String titulo, int codigo, boolean disponivel, int quantidade, String isbn){
         super(titulo, codigo, disponivel, quantidade);
         this.isbn = isbn;
-        this.editora = editora;
     }
 
     public String getIsbn() {
@@ -23,11 +21,4 @@ public class Livro extends Acervo{
         this.isbn = isbn;
     }
 
-    public String getEditora() {
-        return editora;
-    }
-
-    public void setEditora(String editora) {
-        this.editora = editora;
-    }
 }
