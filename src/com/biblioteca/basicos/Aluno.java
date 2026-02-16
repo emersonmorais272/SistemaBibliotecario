@@ -10,11 +10,18 @@ public class Aluno extends Usuario{
         this.matricula = matricula;
     }
 
+    @Override
+    public double calcularMulta(long diasAtraso) {
+        return diasAtraso*2.0;
+    }
+
     public String getMatricula() {
+
         return matricula;
     }
 
     public void setMatricula(String matricula) {
+
         this.matricula = matricula;
     }
 

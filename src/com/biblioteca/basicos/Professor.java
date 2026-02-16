@@ -10,11 +10,19 @@ public class Professor extends Usuario{
         this.siape = siape;
     }
 
+    @Override
+
+    public double calcularMulta(long diasAtraso) {
+        return diasAtraso*3.0;
+    }
+
     public String getSiape() {
+
         return siape;
     }
 
     public void setSiape(String siape) {
+
         this.siape = siape;
     }
 
