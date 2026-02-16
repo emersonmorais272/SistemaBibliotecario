@@ -13,10 +13,12 @@ public abstract class Usuario {
     }
 
     public String getNome() {
+
         return Nome;
     }
 
     public void setNome(String nome) {
+
         Nome = nome;
     }
 
@@ -25,10 +27,12 @@ public abstract class Usuario {
     }
 
     public void setAnoNascimento(int anoNascimento) {
+
         this.anoNascimento = anoNascimento;
     }
 
     public int getIdade() {
+
         return idade;
     }
 
@@ -38,14 +42,18 @@ public abstract class Usuario {
     }
 
     public String getCPF() {
+
         return CPF;
     }
 
     public void setCPF(String CPF) {
+
         this.CPF = CPF;
     }
 
     public int calcularIdade(int anoNascimento, int anoAtual){
+
         return anoAtual - anoNascimento;
     }
+    public abstract double calcularMulta(long diasAtraso);
 }
