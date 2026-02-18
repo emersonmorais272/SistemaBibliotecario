@@ -4,12 +4,12 @@ public abstract class Usuario {
     private String Nome;
     private String CPF;
     private int idade;
-    private int anoNascimento;
+    private String anoNascimento;
 
-    public Usuario(String nome, String CPF, int idade) {
+    public Usuario(String nome, String CPF, String anoNascimento) {
         Nome = nome;
         this.CPF = CPF;
-        this.idade = idade;
+        this.anoNascimento = anoNascimento;
     }
 
     public String getNome() {
@@ -22,11 +22,11 @@ public abstract class Usuario {
         Nome = nome;
     }
 
-    public int getAnoNascimento() {
+    public String getAnoNascimento() {
         return anoNascimento;
     }
 
-    public void setAnoNascimento(int anoNascimento) {
+    public void setAnoNascimento(String anoNascimento) {
 
         this.anoNascimento = anoNascimento;
     }
@@ -38,7 +38,7 @@ public abstract class Usuario {
 
     public void setIdade(int idade) {
         int anoAtual = 2026;
-        this.idade = calcularIdade(anoNascimento, anoAtual);
+        this.idade = calcularIdade(Integer.parseInt(anoNascimento), anoAtual);
     }
 
     public String getCPF() {
