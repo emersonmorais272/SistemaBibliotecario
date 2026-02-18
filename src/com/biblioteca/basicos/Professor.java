@@ -31,4 +31,7 @@ public class Professor extends Usuario{
         datadevolucao = LocalDate.now().plusDays(30);
         return datadevolucao;
     }
+    public int getPrazoEmprestimo() {
+        return 30;
+    }
 }

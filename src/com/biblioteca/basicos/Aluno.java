@@ -32,4 +32,9 @@ public class Aluno extends Usuario{
         datadevolucao = LocalDate.now().plusDays(15);
         return datadevolucao;
     }
+
+    @Override
+    public int getPrazoEmprestimo() {
+        return 15;
+    }
 }

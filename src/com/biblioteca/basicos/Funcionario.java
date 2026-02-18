@@ -20,6 +20,10 @@ public class Funcionario extends Usuario {
     public double calcularMulta(long diasAtraso) {
         return 0;
     }
+    @Override
+    public int getPrazoEmprestimo() {
+        return 0;
+    }
 
 
 }

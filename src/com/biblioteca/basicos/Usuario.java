@@ -56,4 +56,6 @@ public abstract class Usuario {
         return anoAtual - anoNascimento;
     }
     public abstract double calcularMulta(long diasAtraso);
+
+    public abstract int getPrazoEmprestimo();
 }
