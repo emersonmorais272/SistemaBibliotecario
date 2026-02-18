@@ -36,9 +36,4 @@ public abstract class Acervo {
     public void setDisponivel(boolean disponivel) {
         this.disponivel = disponivel;
     }
-
-    /// testando
-    /// TESTE @
-    /// TESTE 3
-    /// TESTE 4
 }
