@@ -4,10 +4,12 @@ import java.time.LocalDate;
 
 public class Aluno extends Usuario{
     private String matricula;
+    private String curso;
 
-    public Aluno(String nome, String CPF, int idade, String matricula){
-        super(nome, CPF, idade);
+    public Aluno(String nome, String CPF, String anoNascimento, String matriculla, String curso){
+        super(nome, CPF, anoNascimento);
         this.matricula = matricula;
+        this.curso = curso;
     }
 
     @Override

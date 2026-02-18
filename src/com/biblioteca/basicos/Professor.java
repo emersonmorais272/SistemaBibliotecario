@@ -5,8 +5,8 @@ import java.time.LocalDate;
 public class Professor extends Usuario{
     private String siape;
 
-    public Professor(String nome, String CPF, int idade, String siape){
-        super(nome, CPF, idade);
+    public Professor(String nome, String CPF, String anoNascimento, String siape){
+        super(nome, CPF, anoNascimento);
         this.siape = siape;
     }
 
