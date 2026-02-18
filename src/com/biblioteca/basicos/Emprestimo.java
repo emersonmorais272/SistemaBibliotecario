@@ -6,20 +6,20 @@ import java.time.temporal.ChronoUnit;
 public class Emprestimo {
 
     private Usuario usuario;
-    private Acervo intem;
+    private Acervo item;
     private LocalDate dataEmprestimo;
     private LocalDate dataPrevistaDevolucao;
     private LocalDate dataDevolucao;
     private double multa;
 
-    public Emprestimo(Usuario usuario, Acervo intem, int diasPrazo) {
+    public Emprestimo(Usuario usuario, Acervo item, int diasPrazo) {
 
         this.usuario=usuario;
-        this.intem=intem;
+        this.item=item;
         this.dataEmprestimo=LocalDate.now();
         this.dataPrevistaDevolucao=dataEmprestimo.plusDays(diasPrazo);
         this.multa=0.0;
-        intem.setDisponivel(false);
+        item.setDisponivel(false);
     }
 
     public void registrarDevoluucao() {
@@ -31,7 +31,7 @@ public class Emprestimo {
 
             this.multa= usuario.calcularMulta(diasAtraso);
         }
-        intem.setDisponivel(true);
+        item.setDisponivel(true);
     }
 
     public void renovar(int diasExtras) {
@@ -41,4 +41,13 @@ public class Emprestimo {
     public double getMulta() {
         return multa;
     }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public Acervo getItem() {
+        return item;
+    }
+
 }
