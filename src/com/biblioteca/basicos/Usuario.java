@@ -51,6 +51,16 @@ public abstract class Usuario {
         this.CPF = CPF;
     }
 
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "Nome='" + Nome + '\'' +
+                ", CPF='" + CPF + '\'' +
+                ", idade=" + idade +
+                ", anoNascimento='" + anoNascimento + '\'' +
+                '}';
+    }
+
     public int calcularIdade(int anoNascimento, int anoAtual){
 
         return anoAtual - anoNascimento;

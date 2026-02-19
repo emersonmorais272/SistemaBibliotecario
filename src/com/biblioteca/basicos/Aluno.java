@@ -34,6 +34,14 @@ public class Aluno extends Usuario{
     }
 
     @Override
+    public String toString() {
+        return "Aluno{" + super.toString() +
+                "matricula='" + matricula + '\'' +
+                ", curso='" + curso + '\'' +
+                '}';
+    }
+
+    @Override
     public int getPrazoEmprestimo() {
         return 15;
     }

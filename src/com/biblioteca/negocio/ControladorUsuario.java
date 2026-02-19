@@ -14,6 +14,8 @@ public class ControladorUsuario {
 
         if(MetodosAuxiliares.temLetra(CPF) || CPF.isBlank()){
             throw new FormatoInvalidoException("O CPF deve conter apenas numeros");
+        } else if(CPF.length() != 9){
+            throw new TamanhoInvalidoException("O CPF deve conter 9 numeros");
         }
 
         if(anoNascimento.length() != 4 || !MetodosAuxiliares.temNumero(anoNascimento)){
@@ -32,7 +34,7 @@ public class ControladorUsuario {
             throw new FormatoInvalidoException("O Curso é formado apenas por letras");
         }
 
-        Usuario novoUsuario = new Aluno(Nome, CPF, anoNascimento, Matricula, Curso);
+        Usuario novoUsuario = new Aluno(Nome.toLowerCase(), CPF, anoNascimento, Matricula, Curso);
 
         return novoUsuario;
 
