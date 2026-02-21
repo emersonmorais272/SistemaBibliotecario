@@ -19,10 +19,9 @@ public class Emprestimo {
         this.dataEmprestimo=LocalDate.now();
         this.dataPrevistaDevolucao=dataEmprestimo.plusDays(diasPrazo);
         this.multa=0.0;
-        item.setDisponivel(false);
     }
 
-    public void registrarDevoluucao() {
+    public void registrarDevolucao() {
 
         this.dataDevolucao = LocalDate.now();
 
@@ -31,7 +30,7 @@ public class Emprestimo {
 
             this.multa= usuario.calcularMulta(diasAtraso);
         }
-        item.setDisponivel(true);
+
     }
 
     public void renovar(int diasExtras) {

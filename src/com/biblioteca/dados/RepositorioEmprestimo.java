@@ -24,6 +24,17 @@ public class RepositorioEmprestimo {
         return listaEmprestimos;
     }
 
+    public Emprestimo buscarPorCpf(String cpf) {
+
+        for (Emprestimo e : listaEmprestimos) {
+
+            if (e.getUsuario().getCPF().equals(cpf)) {
+                return e;
+            }
+        }
+        return null;
+    }
+
     public Emprestimo buscarPorNomeUsuario(String nomeUsuario) {
 
         for (Emprestimo e: listaEmprestimos) {
