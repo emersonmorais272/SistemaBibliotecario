@@ -3,10 +3,15 @@ package com.biblioteca.negocio;
 import com.biblioteca.basicos.Aluno;
 import com.biblioteca.basicos.Professor;
 import com.biblioteca.basicos.Usuario;
+import com.biblioteca.dados.RepositorioUsuario;
+import com.biblioteca.negocio.exceptions.FormatoInvalidoException;
+import com.biblioteca.negocio.exceptions.TamanhoInvalidoException;
 
 public class ControladorUsuario {
 
-    public Usuario Cadastrar(String Nome, String CPF, String anoNascimento, String Matricula, String Curso){
+    RepositorioUsuario repositorio = new RepositorioUsuario();
+
+    public void Cadastrar(String Nome, String CPF, String anoNascimento, String Matricula, String Curso){
 
         if(MetodosAuxiliares.temNumero(Nome) || Nome.isBlank()){
             throw new FormatoInvalidoException("O nome é formado apenas por letras");
@@ -36,11 +41,11 @@ public class ControladorUsuario {
 
         Usuario novoUsuario = new Aluno(Nome.toLowerCase(), CPF, anoNascimento, Matricula, Curso);
 
-        return novoUsuario;
+        repositorio.Adicionar(novoUsuario);
 
     }
 
-    public Usuario Cadastrar(String Nome, String CPF, String anoNascimento, String SIAPE){
+    public void Cadastrar(String Nome, String CPF, String anoNascimento, String SIAPE){
 
         if(MetodosAuxiliares.temNumero(Nome) || Nome.isBlank()){
             throw new FormatoInvalidoException("O nome é formado apenas por letras");
@@ -64,7 +69,26 @@ public class ControladorUsuario {
 
         Usuario novoUsuario = new Professor(Nome, CPF, anoNascimento, SIAPE);
 
-        return novoUsuario;
+        repositorio.Adicionar(novoUsuario);
 
     }
+
+    public String Remover(String CPF){
+        Usuario u = repositorio.Buscar(CPF);
+        if(u != null){
+            String nome = u.getNome();
+            repositorio.Remover(u);
+            return (nome + "removido com sucesso!");
+        }
+        return "Usuario nao existe!";
+    }
+
+    public Usuario Buscar(String CPF){
+        Usuario u = repositorio.Buscar(CPF);
+        return u;
+    }
+
+    /// public Usuario Atualizar(String CPF, String nome, String dataNascimento){}
+
+
 }

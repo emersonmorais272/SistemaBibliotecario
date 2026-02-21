@@ -1,6 +1,6 @@
 package com.biblioteca.basicos;
 
-import com.biblioteca.negocio.TamanhoInvalidoException;
+import com.biblioteca.negocio.exceptions.TamanhoInvalidoException;
 
 public class Livro extends Acervo{
     private String isbn;

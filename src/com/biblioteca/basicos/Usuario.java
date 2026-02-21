@@ -1,6 +1,9 @@
 package com.biblioteca.basicos;
 
-public abstract class Usuario {
+import java.io.Serializable;
+import java.util.Objects;
+
+public abstract class Usuario implements Serializable {
     private String Nome;
     private String CPF;
     private int idade;
@@ -59,6 +62,18 @@ public abstract class Usuario {
                 ", idade=" + idade +
                 ", anoNascimento='" + anoNascimento + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Usuario usuario = (Usuario) o;
+        return Objects.equals(CPF, usuario.CPF);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(CPF);
     }
 
     public int calcularIdade(int anoNascimento, int anoAtual){

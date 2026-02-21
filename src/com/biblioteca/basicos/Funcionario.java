@@ -1,6 +1,8 @@
 package com.biblioteca.basicos;
 
-public class Funcionario extends Usuario {
+import java.io.Serializable;
+
+public class Funcionario extends Usuario implements Serializable {
     private int codigoAcesso;
 
     public Funcionario(int codigoAcesso, String nome, String CPF, String anoNascimento){

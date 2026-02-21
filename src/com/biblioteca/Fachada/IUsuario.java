@@ -5,9 +5,9 @@ import com.biblioteca.negocio.ControladorUsuario;
 
 public class IUsuario {
 
-    private ControladorUsuario cl = new ControladorUsuario();
+    private final ControladorUsuario cl = new ControladorUsuario();
 
-    public Usuario cadastrarUsuario(String Nome, String CPF, String anoNascimento, String Matricula, String Curso){
-        return cl.Cadastrar(Nome, CPF, anoNascimento, Matricula, Curso);
+    public void cadastrarUsuario(String Nome, String CPF, String anoNascimento, String Matricula, String Curso){
+        cl.Cadastrar(Nome, CPF, anoNascimento, Matricula, Curso);
     }
 }

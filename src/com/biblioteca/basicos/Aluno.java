@@ -1,8 +1,9 @@
 package com.biblioteca.basicos;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Aluno extends Usuario{
+public class Aluno extends Usuario implements Serializable {
     private String matricula;
     private String curso;
 

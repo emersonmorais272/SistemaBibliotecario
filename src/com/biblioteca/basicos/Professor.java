@@ -1,8 +1,9 @@
 package com.biblioteca.basicos;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Professor extends Usuario{
+public class Professor extends Usuario implements Serializable {
     private String siape;
 
     public Professor(String nome, String CPF, String anoNascimento, String siape){
