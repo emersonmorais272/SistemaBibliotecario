@@ -40,7 +40,7 @@ public class ControladorUsuario {
         }
 
         Usuario novoUsuario = new Aluno(Nome.toLowerCase(), CPF, anoNascimento, Matricula, Curso);
-
+        novoUsuario.setIdade(2026 - Integer.parseInt(anoNascimento));
         repositorio.Adicionar(novoUsuario);
 
     }
@@ -68,7 +68,7 @@ public class ControladorUsuario {
         }
 
         Usuario novoUsuario = new Professor(Nome, CPF, anoNascimento, SIAPE);
-
+        novoUsuario.setIdade(2026 - Integer.parseInt(anoNascimento));
         repositorio.Adicionar(novoUsuario);
 
     }
@@ -78,7 +78,7 @@ public class ControladorUsuario {
         if(u != null){
             String nome = u.getNome();
             repositorio.Remover(u);
-            return (nome + "removido com sucesso!");
+            return (nome + " removido com sucesso!");
         }
         return "Usuario nao existe!";
     }
@@ -87,8 +87,5 @@ public class ControladorUsuario {
         Usuario u = repositorio.Buscar(CPF);
         return u;
     }
-
-    /// public Usuario Atualizar(String CPF, String nome, String dataNascimento){}
-
 
 }

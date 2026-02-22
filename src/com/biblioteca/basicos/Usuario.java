@@ -40,8 +40,7 @@ public abstract class Usuario implements Serializable {
     }
 
     public void setIdade(int idade) {
-        int anoAtual = 2026;
-        this.idade = calcularIdade(Integer.parseInt(anoNascimento), anoAtual);
+        this.idade = idade;
     }
 
     public String getCPF() {
@@ -76,10 +75,6 @@ public abstract class Usuario implements Serializable {
         return Objects.hashCode(CPF);
     }
 
-    public int calcularIdade(int anoNascimento, int anoAtual){
-
-        return anoAtual - anoNascimento;
-    }
     public abstract double calcularMulta(long diasAtraso);
 
     public abstract int getPrazoEmprestimo();

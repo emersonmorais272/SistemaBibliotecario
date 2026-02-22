@@ -10,4 +10,8 @@ public class IUsuario {
     public void cadastrarUsuario(String Nome, String CPF, String anoNascimento, String Matricula, String Curso){
         cl.Cadastrar(Nome, CPF, anoNascimento, Matricula, Curso);
     }
+
+    public Usuario exibir(String CPF){
+        return cl.Buscar(CPF);
+    }
 }

@@ -10,6 +10,10 @@ public class TesteUsuario {
     public static void main(String[] args){
 
         IUsuario fachada = new IUsuario();
+
+        System.out.println(fachada.exibir("123456789").toString());
+
+
         Scanner sc = new Scanner(System.in);
 
         System.out.println("qual o nome?");
@@ -26,9 +30,9 @@ public class TesteUsuario {
         System.out.println("Qual o Curso");
         String curso = sc.nextLine();
 
-        Usuario U = fachada.cadastrarUsuario(nome, cpf, anoN, matricula, curso);
+        fachada.cadastrarUsuario(nome, cpf, anoN, matricula, curso);
 
-        System.out.println(U.toString());
+        System.out.println(fachada.exibir(cpf).toString());
     }
 }
 
