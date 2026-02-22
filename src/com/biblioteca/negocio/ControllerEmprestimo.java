@@ -38,7 +38,6 @@ public class ControllerEmprestimo {
             throw new ItemIndisponivelException("O item selecionado não está disponível.");
         }
 
-
         int prazo = usuario.getPrazoEmprestimo();
         Emprestimo emprestimo = new Emprestimo(usuario, item, prazo);
 

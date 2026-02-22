@@ -1,9 +1,10 @@
 package com.biblioteca.basicos;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
-public class Emprestimo {
+public class Emprestimo implements Serializable {
 
     private Usuario usuario;
     private Acervo item;

@@ -1,10 +1,13 @@
 package com.biblioteca.Teste;
 
 import com.biblioteca.Fachada.IUsuario;
-import com.biblioteca.basicos.Usuario;
+import com.biblioteca.negocio.MetodosAuxiliares;
+import com.biblioteca.negocio.exceptions.FormatoInvalidoException;
+import com.biblioteca.negocio.exceptions.TamanhoInvalidoException;
 
-import java.util.Random;
 import java.util.Scanner;
+
+import static com.biblioteca.negocio.MetodosAuxiliares.lerEntradaValidada;
 
 public class TesteUsuario {
     public static void main(String[] args){
@@ -15,20 +18,21 @@ public class TesteUsuario {
 
 
         Scanner sc = new Scanner(System.in);
+        String nome = null;
+        String cpf = null;
+        String anoN = null;
+        String matricula = null;
+        String curso = null;
 
-        System.out.println("qual o nome?");
-        String nome = sc.nextLine();
+        nome = lerEntradaValidada("Qual eh o nome?", sc);
 
-        System.out.println("Qual o cpf?");
-        String cpf = sc.nextLine();
+        cpf = lerEntradaValidada("Qual eh o CPF", 9, sc);
 
-        System.out.println("Qual o ano de nascimento");
-        String anoN = sc.nextLine();
+        anoN = lerEntradaValidada("Qual eh o ano de nascimento", 4, sc);
 
-        String matricula = sc.nextLine();
+        matricula = lerEntradaValidada("Qual eh a matricula", 8, sc);
 
-        System.out.println("Qual o Curso");
-        String curso = sc.nextLine();
+        curso = lerEntradaValidada("Qual eh o curso matriculado?", sc);
 
         fachada.cadastrarUsuario(nome, cpf, anoN, matricula, curso);
 
