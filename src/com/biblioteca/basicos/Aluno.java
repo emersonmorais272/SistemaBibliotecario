@@ -7,7 +7,7 @@ public class Aluno extends Usuario implements Serializable {
     private String matricula;
     private String curso;
 
-    public Aluno(String nome, String CPF, String anoNascimento, String matriculla, String curso){
+    public Aluno(String nome, String CPF, String anoNascimento, String matricula, String curso){
         super(nome, CPF, anoNascimento);
         this.matricula = matricula;
         this.curso = curso;
@@ -19,12 +19,10 @@ public class Aluno extends Usuario implements Serializable {
     }
 
     public String getMatricula() {
-
         return matricula;
     }
 
     public void setMatricula(String matricula) {
-
         this.matricula = matricula;
     }
 
@@ -36,7 +34,7 @@ public class Aluno extends Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "Aluno{" + super.toString() +
+        return "USUARIO: Aluno: " + super.toString() +
                 "matricula='" + matricula + '\'' +
                 ", curso='" + curso + '\'' +
                 '}';

@@ -1,10 +1,12 @@
 package com.biblioteca.Teste;
 
 import com.biblioteca.Fachada.IUsuario;
+import com.biblioteca.basicos.Usuario;
 import com.biblioteca.negocio.MetodosAuxiliares;
 import com.biblioteca.negocio.exceptions.FormatoInvalidoException;
 import com.biblioteca.negocio.exceptions.TamanhoInvalidoException;
 
+import java.util.List;
 import java.util.Scanner;
 
 import static com.biblioteca.negocio.MetodosAuxiliares.lerEntradaValidada;
@@ -13,8 +15,12 @@ public class TesteUsuario {
     public static void main(String[] args){
 
         IUsuario fachada = new IUsuario();
+        List<Usuario> usuarios = fachada.Listar();
 
-        System.out.println(fachada.exibir("123456789").toString());
+        for(Usuario u : usuarios){
+            System.out.println(u.toString());
+        }
+        ///System.out.println(fachada.exibir("123456789").toString());
 
 
         Scanner sc = new Scanner(System.in);
