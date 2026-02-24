@@ -5,7 +5,7 @@ import com.biblioteca.negocio.ControladorUsuario;
 
 import java.util.List;
 
-public class IUsuario {
+public class FachadaUsuario {
 
     private final ControladorUsuario cl = new ControladorUsuario();
 
@@ -13,8 +13,8 @@ public class IUsuario {
         cl.Cadastrar(Nome, CPF, anoNascimento, Matricula, Curso);
     }
 
-    public void atualizar(Usuario u, String Nome, String CPF, String anoNascimento, String Matricula, String Curso){
-        cl.Atualizar(u, Nome, anoNascimento,Matricula, Curso);
+    public void atualizar(String Nome, String CPF, String anoNascimento, String Matricula, String Curso){
+        cl.Atualizar(Nome, CPF, anoNascimento,Matricula, Curso);
     }
 
     public Usuario exibir(String CPF){

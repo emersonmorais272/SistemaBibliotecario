@@ -17,10 +17,12 @@ public class RepositorioEmprestimo {
 
     public void adicionar (Emprestimo emprestimo) {
         listaEmprestimos.add(emprestimo);
+        this.SalvarArquivo(listaEmprestimos);
     }
 
     public void remover(Emprestimo emprestimo) {
         listaEmprestimos.remove(emprestimo);
+        this.SalvarArquivo(listaEmprestimos);
     }
 
     public List<Emprestimo> listar() {

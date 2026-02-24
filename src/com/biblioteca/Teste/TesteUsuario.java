@@ -1,10 +1,7 @@
 package com.biblioteca.Teste;
 
-import com.biblioteca.Fachada.IUsuario;
+import com.biblioteca.Fachada.FachadaUsuario;
 import com.biblioteca.basicos.Usuario;
-import com.biblioteca.negocio.MetodosAuxiliares;
-import com.biblioteca.negocio.exceptions.FormatoInvalidoException;
-import com.biblioteca.negocio.exceptions.TamanhoInvalidoException;
 
 import java.util.List;
 import java.util.Scanner;
@@ -14,7 +11,7 @@ import static com.biblioteca.negocio.MetodosAuxiliares.lerEntradaValidada;
 public class TesteUsuario {
     public static void main(String[] args){
 
-        IUsuario fachada = new IUsuario();
+        FachadaUsuario fachada = new FachadaUsuario();
         List<Usuario> usuarios = fachada.Listar();
 
         for(Usuario u : usuarios){
