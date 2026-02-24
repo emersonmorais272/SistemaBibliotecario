@@ -1,12 +1,14 @@
 package com.biblioteca.basicos;
 
 import com.biblioteca.negocio.exceptions.TamanhoInvalidoException;
+import java.io.Serializable;
 
-public class Livro extends Acervo{
+public class Livro extends Acervo implements Serializable {
     private String isbn;
 
-    public Livro(String titulo, int codigo, boolean disponivel, int quantidade, String isbn){
-        super(titulo, codigo, disponivel, quantidade);
+    // DEIXE APENAS ESTE CONSTRUTOR
+    public Livro(String titulo, String autor, int codigo, boolean disponivel, int quantidade, String isbn) {
+        super(titulo, autor, codigo, disponivel, quantidade);
         this.isbn = isbn;
     }
 
@@ -14,11 +16,10 @@ public class Livro extends Acervo{
         return isbn;
     }
 
-    public void setIsbn (String isbn) throws TamanhoInvalidoException{
-        if(isbn.length() < 13){
+    public void setIsbn(String isbn) throws TamanhoInvalidoException {
+        if (isbn == null || isbn.length() < 13) {
             throw new TamanhoInvalidoException("O codigo ISBN deve possuir 13 numeros");
         }
         this.isbn = isbn;
     }
-
 }

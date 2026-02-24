@@ -7,7 +7,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RepositorioEmprestimo {
+public class RepositorioEmprestimo implements IRepositorioEmprestimo {
 
     private final List<Emprestimo> listaEmprestimos = new ArrayList<>();
 

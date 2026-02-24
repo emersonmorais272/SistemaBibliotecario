@@ -1,13 +1,17 @@
 package com.biblioteca.basicos;
 
-public abstract class Acervo {
+import java.io.Serializable;
+
+public abstract class Acervo implements Serializable {
     private String titulo;
+    private String autor;
     private int codigo;
     private boolean disponivel = true;
     private int quantidade;
 
-    public Acervo(String titulo, int codigo, boolean disponivel, int quantidade){
+    public Acervo(String titulo, String autor, int codigo, boolean disponivel, int quantidade) {
         this.titulo = titulo;
+        this.autor = autor;
         this.codigo = codigo;
         this.disponivel = disponivel;
         this.quantidade = quantidade;
@@ -19,6 +23,14 @@ public abstract class Acervo {
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
     }
 
     public int getCodigo() {
@@ -37,7 +49,11 @@ public abstract class Acervo {
         this.disponivel = disponivel;
     }
 
-    /// testando
-    /// TESTE @
-    /// TESTE 3
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
 }
