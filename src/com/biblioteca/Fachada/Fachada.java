@@ -58,11 +58,11 @@ public class Fachada {
         this.controladorUsuario.Remover(cpf);
     }
 
-    public Emprestimo realizaeEmprestimo (Usuario usuario, Acervo item){
+    public Emprestimo realizarEmprestimo (Usuario usuario, Acervo item){
         return this.controladorEmprestimo.realizarEmprestimo(usuario, item);
     }
 
-    public void finalizarDevolução (String cpfUsuario) {
+    public void finalizarDevolucao (String cpfUsuario) {
         this.controladorEmprestimo.finalizarDevolucao(cpfUsuario);
     }
 }
