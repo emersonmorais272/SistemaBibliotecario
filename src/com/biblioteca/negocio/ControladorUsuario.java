@@ -11,8 +11,13 @@ import com.biblioteca.negocio.exceptions.UsuarioNaoEncontradoException;
 import java.util.List;
 
 public class ControladorUsuario {
+    private RepositorioUsuario repoUsuario;
 
-    RepositorioUsuario repositorio = new RepositorioUsuario();
+    public ControladorUsuario(RepositorioUsuario repo) {
+        this.repoUsuario = repo;
+    }
+
+
 
     public void Cadastrar(String Nome, String CPF, String anoNascimento, String Matricula, String Curso){
 
@@ -44,7 +49,7 @@ public class ControladorUsuario {
 
         Usuario novoUsuario = new Aluno(Nome.toLowerCase(), CPF, anoNascimento, Matricula, Curso);
         novoUsuario.setIdade(2026 - Integer.parseInt(anoNascimento));
-        repositorio.Adicionar(novoUsuario);
+        this.repoUsuario.Adicionar(novoUsuario);
 
     }
 
@@ -72,31 +77,31 @@ public class ControladorUsuario {
 
         Usuario novoUsuario = new Professor(Nome, CPF, anoNascimento, SIAPE);
         novoUsuario.setIdade(2026 - Integer.parseInt(anoNascimento));
-        repositorio.Adicionar(novoUsuario);
+        this.repoUsuario.Adicionar(novoUsuario);
 
     }
 
     public String Remover(String CPF){
-        Usuario u = repositorio.Buscar(CPF);
+        Usuario u = this.repoUsuario.Buscar(CPF);
         if(u != null){
             String nome = u.getNome();
-            repositorio.Remover(u);
+            this.repoUsuario.Remover(u);
             return (nome + " removido com sucesso!");
         }
         return "Usuario nao existe!";
     }
 
     public Usuario Buscar(String CPF){
-        Usuario u = repositorio.Buscar(CPF);
+        Usuario u = this.repoUsuario.Buscar(CPF);
         return u;
     }
 
     public List<Usuario> Listar(){
-        return repositorio.Listar();
+        return this.repoUsuario.Listar();
     }
 
     public Usuario Atualizar(String CPF, String Nome, String anoNascimento, String Matricula, String Curso) {
-        if(repositorio.Buscar(CPF) == null){
+        if(this.repoUsuario.Buscar(CPF) == null){
             throw new UsuarioNaoEncontradoException("Usuario nao encontrado");
         }
 
@@ -119,7 +124,7 @@ public class ControladorUsuario {
         if (MetodosAuxiliares.temNumero(Curso) || Curso.isBlank()) {
             throw new FormatoInvalidoException("O Curso é formado apenas por letras");
         }
-        Usuario U = repositorio.Buscar(CPF);
+        Usuario U = this.repoUsuario.Buscar(CPF);
         U = new Aluno(Nome, U.getCPF(), anoNascimento, Matricula, Curso);
         return U;
     }

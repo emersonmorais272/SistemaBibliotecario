@@ -11,8 +11,8 @@ import static com.biblioteca.negocio.MetodosAuxiliares.lerEntradaValidada;
 public class TesteUsuario {
     public static void main(String[] args){
 
-        Fachada fachada = new Fachada();
-        List<Usuario> usuarios = fachada.Listar();
+        Fachada fachada = Fachada.getInstance();
+        List<Usuario> usuarios = fachada.listarUsuario();
 
         for(Usuario u : usuarios){
             System.out.println(u.toString());
@@ -37,9 +37,9 @@ public class TesteUsuario {
 
         curso = lerEntradaValidada("Qual eh o curso matriculado?", sc);
 
-        fachada.cadastrarUsuario(nome, cpf, anoN, matricula, curso);
+        fachada.cadastrarAluno(nome, cpf, anoN, matricula, curso);
 
-        System.out.println(fachada.exibir(cpf).toString());
+        System.out.println(fachada.buscarUsuario(cpf).toString());
     }
 }
 

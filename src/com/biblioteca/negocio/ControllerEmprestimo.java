@@ -13,7 +13,6 @@ public class ControllerEmprestimo {
 
     private RepositorioEmprestimo repoEmprestimo;
 
-
     public ControllerEmprestimo(RepositorioEmprestimo repo) {
         this.repoEmprestimo = repo;
     }
