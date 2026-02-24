@@ -2,10 +2,21 @@ package com.biblioteca.Fachada;
 
 import com.biblioteca.basicos.Usuario;
 import com.biblioteca.negocio.ControladorUsuario;
+import com.biblioteca.negocio.ControllerEmprestimo;
 
 import java.util.List;
 
-public class FachadaUsuario {
+public class Fachada {
+
+    private static Fachada instancia;
+
+    private ControladorUsuario controladorUsuario;
+    private ControllerEmprestimo controladorEmprestimo;
+
+    private Fachada(){
+        this.controladorUsuario=new ControladorUsuario();
+        this.controladorEmprestimo=new ControllerEmprestimo(repoEmp);
+    }
 
     private final ControladorUsuario cl = new ControladorUsuario();
 

@@ -1,6 +1,6 @@
 package com.biblioteca.Teste;
 
-import com.biblioteca.Fachada.FachadaUsuario;
+import com.biblioteca.Fachada.Fachada;
 import com.biblioteca.basicos.Usuario;
 
 import java.util.List;
@@ -11,7 +11,7 @@ import static com.biblioteca.negocio.MetodosAuxiliares.lerEntradaValidada;
 public class TesteUsuario {
     public static void main(String[] args){
 
-        FachadaUsuario fachada = new FachadaUsuario();
+        Fachada fachada = new Fachada();
         List<Usuario> usuarios = fachada.Listar();
 
         for(Usuario u : usuarios){
