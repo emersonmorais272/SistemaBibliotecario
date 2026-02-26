@@ -5,6 +5,8 @@ import com.biblioteca.basicos.Usuario;
 import com.biblioteca.basicos.Acervo;
 import com.biblioteca.basicos.Livro;
 import com.biblioteca.basicos.Emprestimo;
+import com.biblioteca.negocio.exceptions.UsuarioNaoEncontradoException;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -16,10 +18,11 @@ public class TesteUsuario {
         Fachada fachada = Fachada.getInstance();
         List<Usuario> usuarios = fachada.listarUsuario();
 
-        for(Usuario u : usuarios){
-            System.out.println(u.toString());
+        if(fachada.listarUsuario() == null){
+            System.out.println("Ainda nao ha usuarios cadastrados");
+        } else {
+            System.out.println(fachada.listarUsuario());
         }
-
         Scanner sc = new Scanner(System.in);
         String nome = null;
         String cpf = null;
@@ -28,7 +31,7 @@ public class TesteUsuario {
         String curso = null;
 
         nome = lerEntradaValidada("Qual eh o nome?", sc);
-        cpf = lerEntradaValidada("Qual eh o CPF", 9, sc);
+        cpf = lerEntradaValidada("Qual eh o CPF", 11, sc);
         anoN = lerEntradaValidada("Qual eh o ano de nascimento", 4, sc);
         matricula = lerEntradaValidada("Qual eh a matricula", 8, sc);
         curso = lerEntradaValidada("Qual eh o curso matriculado?", sc);

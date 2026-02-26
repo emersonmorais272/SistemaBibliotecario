@@ -27,6 +27,14 @@ public class Professor extends Usuario implements Serializable {
         this.siape = siape;
     }
 
+    @Override
+    public String toString() {
+        return  "\n-----------------------------\n" +
+                "USUARIO: Professor: " + super.toString() +
+                "SIAPE='" + this.siape +
+                "-----------------------------";
+    }
+
     public LocalDate calcularDevoluçao (){
         LocalDate datadevolucao;
         datadevolucao = LocalDate.now().plusDays(30);

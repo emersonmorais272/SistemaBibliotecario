@@ -4,16 +4,17 @@ import com.biblioteca.basicos.Aluno;
 import com.biblioteca.basicos.Professor;
 import com.biblioteca.basicos.Usuario;
 import com.biblioteca.dados.RepositorioUsuario;
+import com.biblioteca.negocio.exceptions.EntradaInvalidaException;
 import com.biblioteca.negocio.exceptions.FormatoInvalidoException;
 import com.biblioteca.negocio.exceptions.TamanhoInvalidoException;
 import com.biblioteca.negocio.exceptions.UsuarioNaoEncontradoException;
 
 import java.util.List;
 
-public class ControladorUsuario {
+public class ControllerUsuario {
     private RepositorioUsuario repoUsuario;
 
-    public ControladorUsuario(RepositorioUsuario repo) {
+    public ControllerUsuario(RepositorioUsuario repo) {
         this.repoUsuario = repo;
     }
 
@@ -27,8 +28,10 @@ public class ControladorUsuario {
 
         if(MetodosAuxiliares.temLetra(CPF) || CPF.isBlank()){
             throw new FormatoInvalidoException("O CPF deve conter apenas numeros");
-        } else if(CPF.length() != 9){
-            throw new TamanhoInvalidoException("O CPF deve conter 9 numeros");
+        } else if(CPF.length() != 11){
+            throw new TamanhoInvalidoException("O CPF deve conter 11 numeros");
+        } else if(this.Buscar(CPF) != null){
+            throw new EntradaInvalidaException("O CPF ja esta cadastrado");
         }
 
         if(anoNascimento.length() != 4 || !MetodosAuxiliares.temNumero(anoNascimento)){
@@ -61,6 +64,8 @@ public class ControladorUsuario {
 
         if(MetodosAuxiliares.temLetra(CPF) || CPF.isBlank()){
             throw new FormatoInvalidoException("O CPF deve conter apenas numeros");
+        } else if(CPF.length() != 11){
+            throw new TamanhoInvalidoException("O CPF deve conter 11 numeros");
         }
 
         if(anoNascimento.length() != 4 || !MetodosAuxiliares.temNumero(anoNascimento)){
@@ -100,7 +105,7 @@ public class ControladorUsuario {
         return this.repoUsuario.Listar();
     }
 
-    public Usuario Atualizar(String CPF, String Nome, String anoNascimento, String Matricula, String Curso) {
+    public void Atualizar(String CPF, String Nome, String anoNascimento, String Matricula, String Curso) {
         if(this.repoUsuario.Buscar(CPF) == null){
             throw new UsuarioNaoEncontradoException("Usuario nao encontrado");
         }
@@ -126,7 +131,7 @@ public class ControladorUsuario {
         }
         Usuario U = this.repoUsuario.Buscar(CPF);
         U = new Aluno(Nome, U.getCPF(), anoNascimento, Matricula, Curso);
-        return U;
+        this.repoUsuario.Atualizar(U);
     }
 
 }

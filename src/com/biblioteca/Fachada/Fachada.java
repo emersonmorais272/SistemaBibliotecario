@@ -6,7 +6,7 @@ import com.biblioteca.basicos.Usuario;
 import com.biblioteca.dados.RepositorioAcervo; // Adicionado
 import com.biblioteca.dados.RepositorioEmprestimo;
 import com.biblioteca.dados.RepositorioUsuario;
-import com.biblioteca.negocio.ControladorUsuario;
+import com.biblioteca.negocio.ControllerUsuario;
 import com.biblioteca.negocio.ControllerAcervo; // Adicionado
 import com.biblioteca.negocio.ControllerEmprestimo;
 
@@ -16,7 +16,7 @@ public class Fachada {
 
     private static Fachada instancia;
 
-    private ControladorUsuario controladorUsuario;
+    private ControllerUsuario controladorUsuario;
     private ControllerEmprestimo controladorEmprestimo;
     private ControllerAcervo controladorAcervo;
 
@@ -25,7 +25,7 @@ public class Fachada {
         RepositorioEmprestimo repoEm = new RepositorioEmprestimo();
         RepositorioAcervo repoAc = new RepositorioAcervo();
 
-        this.controladorUsuario = new ControladorUsuario(repoUs);
+        this.controladorUsuario = new ControllerUsuario(repoUs);
         this.controladorEmprestimo = new ControllerEmprestimo(repoEm);
         this.controladorAcervo = new ControllerAcervo(repoAc);
     }
@@ -68,8 +68,8 @@ public class Fachada {
         this.controladorUsuario.Cadastrar(nome, cpf, nasc, siape);
     }
 
-    public void atualizar(String Nome, String CPF, String anoNascimento, String Matricula, String Curso){
-        this.controladorUsuario.Atualizar(Nome, CPF, anoNascimento, Matricula, Curso);
+    public void atualizarUsuario(String CPF, String Nome, String anoNascimento, String Matricula, String Curso){
+        this.controladorUsuario.Atualizar(CPF, Nome, anoNascimento, Matricula, Curso);
     }
 
     public Usuario buscarUsuario (String CPF){

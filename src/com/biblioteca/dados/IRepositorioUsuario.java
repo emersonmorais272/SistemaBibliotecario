@@ -9,6 +9,8 @@ public interface IRepositorioUsuario {
 
     void Remover(Usuario u);
 
+    void Atualizar(Usuario usuarioAtualizado);
+
     Usuario Buscar(String CPF);
 
     List<Usuario> Listar();

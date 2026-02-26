@@ -1,6 +1,7 @@
 package com.biblioteca.dados;
 
 import com.biblioteca.basicos.Usuario;
+import com.biblioteca.negocio.exceptions.UsuarioNaoEncontradoException;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -22,6 +23,24 @@ public class RepositorioUsuario implements IRepositorioUsuario {
     public void Remover(Usuario u){
         this.ListaUsuarios.remove(u);
         this.SalvarArquivo(ListaUsuarios);
+    }
+
+    public void Atualizar(Usuario usuarioAtualizado){
+        boolean encontrou = false;
+
+        for(int i = 0; i < this.ListaUsuarios.size(); i++){
+            if(this.ListaUsuarios.get(i).getCPF().equals(usuarioAtualizado.getCPF())){
+                this.ListaUsuarios.set(i, usuarioAtualizado);
+                encontrou = true;
+                break;
+            }
+        }
+
+        if(encontrou){
+            this.SalvarArquivo(ListaUsuarios);
+        } else {
+            throw new UsuarioNaoEncontradoException("Nao foi possivel atualiazer o usuario: CPF NAO ENCONTRADO!");
+        }
     }
 
     public List<Usuario> Listar(){
