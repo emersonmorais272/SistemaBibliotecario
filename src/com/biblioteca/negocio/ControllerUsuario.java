@@ -134,4 +134,30 @@ public class ControllerUsuario {
         this.repoUsuario.Atualizar(U);
     }
 
+    public void Atualizar(String CPF, String Nome, String anoNascimento, String siape) {
+        if(this.repoUsuario.Buscar(CPF) == null){
+            throw new UsuarioNaoEncontradoException("Usuario nao encontrado");
+        }
+
+        if (MetodosAuxiliares.temNumero(Nome) || Nome.isBlank()) {
+            throw new FormatoInvalidoException("O nome é formado apenas por letras");
+        }
+
+        if (anoNascimento.length() != 4 || !MetodosAuxiliares.temNumero(anoNascimento)) {
+            throw new TamanhoInvalidoException("O ano de nascimento deve conter 4 numeros");
+        } else if (MetodosAuxiliares.temLetra(anoNascimento)) {
+            throw new FormatoInvalidoException("O ano de nascimento nao deve conter letras");
+        }
+
+        if (MetodosAuxiliares.temLetra(siape) || siape.isBlank()) {
+            throw new FormatoInvalidoException("A matricula deve conter apenas numeros");
+        } else if (siape.length() != 8) {
+            throw new TamanhoInvalidoException("A matricula deve possuir 8 numeros");
+        }
+
+        Usuario U = this.repoUsuario.Buscar(CPF);
+        U = new Professor(Nome, U.getCPF(), anoNascimento, siape);
+        this.repoUsuario.Atualizar(U);
+    }
+
 }
