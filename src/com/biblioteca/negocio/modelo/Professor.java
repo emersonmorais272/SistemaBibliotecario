@@ -1,4 +1,4 @@
-package com.biblioteca.basicos;
+package com.biblioteca.negocio.modelo;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -25,6 +25,14 @@ public class Professor extends Usuario implements Serializable {
     public void setSiape(String siape) {
 
         this.siape = siape;
+    }
+
+    @Override
+    public String toString() {
+        return  "\n-----------------------------\n" +
+                "USUARIO: Professor: " + super.toString() +
+                "SIAPE='" + this.siape +
+                "-----------------------------";
     }
 
     public LocalDate calcularDevoluçao (){

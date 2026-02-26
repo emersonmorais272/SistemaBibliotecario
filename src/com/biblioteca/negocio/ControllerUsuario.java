@@ -1,19 +1,20 @@
 package com.biblioteca.negocio;
 
-import com.biblioteca.basicos.Aluno;
-import com.biblioteca.basicos.Professor;
-import com.biblioteca.basicos.Usuario;
+import com.biblioteca.negocio.modelo.Aluno;
+import com.biblioteca.negocio.modelo.Professor;
+import com.biblioteca.negocio.modelo.Usuario;
 import com.biblioteca.dados.RepositorioUsuario;
+import com.biblioteca.negocio.exceptions.EntradaInvalidaException;
 import com.biblioteca.negocio.exceptions.FormatoInvalidoException;
 import com.biblioteca.negocio.exceptions.TamanhoInvalidoException;
 import com.biblioteca.negocio.exceptions.UsuarioNaoEncontradoException;
 
 import java.util.List;
 
-public class ControladorUsuario {
+public class ControllerUsuario {
     private RepositorioUsuario repoUsuario;
 
-    public ControladorUsuario(RepositorioUsuario repo) {
+    public ControllerUsuario(RepositorioUsuario repo) {
         this.repoUsuario = repo;
     }
 
@@ -27,8 +28,10 @@ public class ControladorUsuario {
 
         if(MetodosAuxiliares.temLetra(CPF) || CPF.isBlank()){
             throw new FormatoInvalidoException("O CPF deve conter apenas numeros");
-        } else if(CPF.length() != 9){
-            throw new TamanhoInvalidoException("O CPF deve conter 9 numeros");
+        } else if(CPF.length() != 11){
+            throw new TamanhoInvalidoException("O CPF deve conter 11 numeros");
+        } else if(this.Buscar(CPF) != null){
+            throw new EntradaInvalidaException("O CPF ja esta cadastrado");
         }
 
         if(anoNascimento.length() != 4 || !MetodosAuxiliares.temNumero(anoNascimento)){
@@ -61,6 +64,8 @@ public class ControladorUsuario {
 
         if(MetodosAuxiliares.temLetra(CPF) || CPF.isBlank()){
             throw new FormatoInvalidoException("O CPF deve conter apenas numeros");
+        } else if(CPF.length() != 11){
+            throw new TamanhoInvalidoException("O CPF deve conter 11 numeros");
         }
 
         if(anoNascimento.length() != 4 || !MetodosAuxiliares.temNumero(anoNascimento)){
@@ -100,7 +105,7 @@ public class ControladorUsuario {
         return this.repoUsuario.Listar();
     }
 
-    public Usuario Atualizar(String CPF, String Nome, String anoNascimento, String Matricula, String Curso) {
+    public void Atualizar(String CPF, String Nome, String anoNascimento, String Matricula, String Curso) {
         if(this.repoUsuario.Buscar(CPF) == null){
             throw new UsuarioNaoEncontradoException("Usuario nao encontrado");
         }
@@ -126,7 +131,33 @@ public class ControladorUsuario {
         }
         Usuario U = this.repoUsuario.Buscar(CPF);
         U = new Aluno(Nome, U.getCPF(), anoNascimento, Matricula, Curso);
-        return U;
+        this.repoUsuario.Atualizar(U);
+    }
+
+    public void Atualizar(String CPF, String Nome, String anoNascimento, String siape) {
+        if(this.repoUsuario.Buscar(CPF) == null){
+            throw new UsuarioNaoEncontradoException("Usuario nao encontrado");
+        }
+
+        if (MetodosAuxiliares.temNumero(Nome) || Nome.isBlank()) {
+            throw new FormatoInvalidoException("O nome é formado apenas por letras");
+        }
+
+        if (anoNascimento.length() != 4 || !MetodosAuxiliares.temNumero(anoNascimento)) {
+            throw new TamanhoInvalidoException("O ano de nascimento deve conter 4 numeros");
+        } else if (MetodosAuxiliares.temLetra(anoNascimento)) {
+            throw new FormatoInvalidoException("O ano de nascimento nao deve conter letras");
+        }
+
+        if (MetodosAuxiliares.temLetra(siape) || siape.isBlank()) {
+            throw new FormatoInvalidoException("A matricula deve conter apenas numeros");
+        } else if (siape.length() != 8) {
+            throw new TamanhoInvalidoException("A matricula deve possuir 8 numeros");
+        }
+
+        Usuario U = this.repoUsuario.Buscar(CPF);
+        U = new Professor(Nome, U.getCPF(), anoNascimento, siape);
+        this.repoUsuario.Atualizar(U);
     }
 
 }

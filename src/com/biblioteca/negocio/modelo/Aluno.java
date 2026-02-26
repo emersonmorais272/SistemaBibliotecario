@@ -1,4 +1,4 @@
-package com.biblioteca.basicos;
+package com.biblioteca.negocio.modelo;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -34,10 +34,11 @@ public class Aluno extends Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "USUARIO: Aluno: " + super.toString() +
+        return  "\n-----------------------------\n" +
+                "USUARIO: Aluno: " + super.toString() +
                 "matricula='" + matricula + '\'' +
-                ", curso='" + curso + '\'' +
-                '}';
+                ", curso='" + curso + '\n' +
+                "-----------------------------";
     }
 
     @Override

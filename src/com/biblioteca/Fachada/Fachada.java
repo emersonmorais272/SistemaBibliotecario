@@ -1,11 +1,13 @@
 package com.biblioteca.Fachada;
 
-import com.biblioteca.basicos.Acervo;
-import com.biblioteca.basicos.Emprestimo;
-import com.biblioteca.basicos.Usuario;
+import com.biblioteca.negocio.modelo.Acervo;
+import com.biblioteca.negocio.modelo.Emprestimo;
+import com.biblioteca.negocio.modelo.Usuario;
+import com.biblioteca.dados.RepositorioAcervo; // Adicionado
 import com.biblioteca.dados.RepositorioEmprestimo;
 import com.biblioteca.dados.RepositorioUsuario;
-import com.biblioteca.negocio.ControladorUsuario;
+import com.biblioteca.negocio.ControllerUsuario;
+import com.biblioteca.negocio.ControllerAcervo; // Adicionado
 import com.biblioteca.negocio.ControllerEmprestimo;
 
 import java.util.List;
@@ -14,21 +16,47 @@ public class Fachada {
 
     private static Fachada instancia;
 
-    private ControladorUsuario controladorUsuario;
+    private ControllerUsuario controladorUsuario;
     private ControllerEmprestimo controladorEmprestimo;
+    private ControllerAcervo controladorAcervo;
 
     private Fachada(){
         RepositorioUsuario repoUs = new RepositorioUsuario();
         RepositorioEmprestimo repoEm = new RepositorioEmprestimo();
-        this.controladorUsuario=new ControladorUsuario(repoUs);
-        this.controladorEmprestimo=new ControllerEmprestimo(repoEm);
+        RepositorioAcervo repoAc = new RepositorioAcervo();
+
+        this.controladorUsuario = new ControllerUsuario(repoUs);
+        this.controladorEmprestimo = new ControllerEmprestimo(repoEm);
+        this.controladorAcervo = new ControllerAcervo(repoAc);
     }
 
     public static Fachada getInstance() {
-        if(instancia==null) {
-            instancia =new Fachada();
+        if(instancia == null) {
+            instancia = new Fachada();
         }
         return instancia;
+    }
+
+    // MÉTODOS DO ACERVO
+
+    public void cadastrarItem(Acervo item) throws Exception {
+        this.controladorAcervo.cadastrarItem(item);
+    }
+
+    public void removerItem(int codigo) throws Exception {
+        this.controladorAcervo.removerItem(codigo);
+    }
+
+    public Acervo buscarItem(int codigo) {
+        return this.controladorAcervo.buscarItem(codigo);
+    }
+
+    public void atualizarItem(Acervo item) throws Exception {
+        this.controladorAcervo.atualizarItem(item);
+    }
+
+    public List<Acervo> listarAcervo() {
+        return this.controladorAcervo.listarTudo();
     }
 
 
@@ -40,10 +68,8 @@ public class Fachada {
         this.controladorUsuario.Cadastrar(nome, cpf, nasc, siape);
     }
 
-
-
-    public void atualizar(String Nome, String CPF, String anoNascimento, String Matricula, String Curso){
-        this.controladorUsuario.Atualizar(Nome, CPF, anoNascimento,Matricula, Curso);
+    public void atualizarUsuario(String CPF, String Nome, String anoNascimento, String Matricula, String Curso){
+        this.controladorUsuario.Atualizar(CPF, Nome, anoNascimento, Matricula, Curso);
     }
 
     public Usuario buscarUsuario (String CPF){
@@ -57,6 +83,7 @@ public class Fachada {
     public void removerUsuario(String cpf) {
         this.controladorUsuario.Remover(cpf);
     }
+
 
     public Emprestimo realizarEmprestimo (Usuario usuario, Acervo item){
         return this.controladorEmprestimo.realizarEmprestimo(usuario, item);
