@@ -1,6 +1,6 @@
 package com.biblioteca.negocio;
 
-import com.biblioteca.basicos.Acervo;
+import com.biblioteca.negocio.modelo.Acervo;
 import com.biblioteca.dados.IRepositorioAcervo;
 import java.util.List;
 

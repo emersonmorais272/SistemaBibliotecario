@@ -1,8 +1,8 @@
 package com.biblioteca.negocio;
 
-import com.biblioteca.basicos.Aluno;
-import com.biblioteca.basicos.Professor;
-import com.biblioteca.basicos.Usuario;
+import com.biblioteca.negocio.modelo.Aluno;
+import com.biblioteca.negocio.modelo.Professor;
+import com.biblioteca.negocio.modelo.Usuario;
 import com.biblioteca.dados.RepositorioUsuario;
 import com.biblioteca.negocio.exceptions.EntradaInvalidaException;
 import com.biblioteca.negocio.exceptions.FormatoInvalidoException;

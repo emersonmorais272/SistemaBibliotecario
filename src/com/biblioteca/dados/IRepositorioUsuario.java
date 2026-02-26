@@ -1,6 +1,6 @@
 package com.biblioteca.dados;
 
-import com.biblioteca.basicos.Usuario;
+import com.biblioteca.negocio.modelo.Usuario;
 import java.util.List;
 
 public interface IRepositorioUsuario {

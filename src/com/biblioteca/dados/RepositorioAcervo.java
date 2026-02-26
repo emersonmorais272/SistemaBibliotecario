@@ -1,6 +1,6 @@
 package com.biblioteca.dados;
 
-import com.biblioteca.basicos.Acervo;
+import com.biblioteca.negocio.modelo.Acervo;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -84,7 +84,7 @@ public class RepositorioAcervo implements IRepositorioAcervo {
             // livros cadastrados
 
             if (buscar(1) == null) {
-                listaItens.add(new com.biblioteca.basicos.Livro(
+                listaItens.add(new com.biblioteca.negocio.modelo.Livro(
                         "A Hora da estrela",
                         "Clarice Lispector",
                         1,
@@ -95,7 +95,7 @@ public class RepositorioAcervo implements IRepositorioAcervo {
             }
 
             if (buscar(2) == null) {
-                listaItens.add(new com.biblioteca.basicos.Livro(
+                listaItens.add(new com.biblioteca.negocio.modelo.Livro(
                         "Noites Brancas",
                         "Fiódor Dostoiévski",
                         2,
@@ -106,7 +106,7 @@ public class RepositorioAcervo implements IRepositorioAcervo {
             }
 
             if (buscar(3) == null) {
-                listaItens.add(new com.biblioteca.basicos.Livro(
+                listaItens.add(new com.biblioteca.negocio.modelo.Livro(
                         "A Metamorfose",
                         "Franz Kafka",
                         3,
@@ -117,7 +117,7 @@ public class RepositorioAcervo implements IRepositorioAcervo {
             }
 
             if (buscar(4) == null) {
-                listaItens.add(new com.biblioteca.basicos.Livro(
+                listaItens.add(new com.biblioteca.negocio.modelo.Livro(
                         "A Redoma de Vidro",
                         "Sylvia Plath",
                         4,
@@ -128,7 +128,7 @@ public class RepositorioAcervo implements IRepositorioAcervo {
             }
 
             if (buscar(5) == null) {
-                listaItens.add(new com.biblioteca.basicos.Livro(
+                listaItens.add(new com.biblioteca.negocio.modelo.Livro(
                         "O Processo",
                         "Franz Kafka",
                         5,
@@ -139,7 +139,7 @@ public class RepositorioAcervo implements IRepositorioAcervo {
             }
 
             if (buscar(6) == null) {
-                listaItens.add(new com.biblioteca.basicos.Livro(
+                listaItens.add(new com.biblioteca.negocio.modelo.Livro(
                         "Água Viva",
                         "Clarice Lispector",
                         6,
@@ -150,7 +150,7 @@ public class RepositorioAcervo implements IRepositorioAcervo {
             }
 
             if (buscar(7) == null) {
-                listaItens.add(new com.biblioteca.basicos.Livro(
+                listaItens.add(new com.biblioteca.negocio.modelo.Livro(
                         "Jantar Secreto",
                         "Raphael Montes",
                         7,
@@ -161,7 +161,7 @@ public class RepositorioAcervo implements IRepositorioAcervo {
             }
 
             if (buscar(8) == null) {
-                listaItens.add(new com.biblioteca.basicos.Livro(
+                listaItens.add(new com.biblioteca.negocio.modelo.Livro(
                         "O Avesso da pele",
                         "Jeferson Tenório",
                         8,
@@ -172,7 +172,7 @@ public class RepositorioAcervo implements IRepositorioAcervo {
             }
 
             if (buscar(9) == null) {
-                listaItens.add(new com.biblioteca.basicos.Livro(
+                listaItens.add(new com.biblioteca.negocio.modelo.Livro(
                         "Capitães da Areia",
                         "Jorge Amado",
                         9,
@@ -183,7 +183,7 @@ public class RepositorioAcervo implements IRepositorioAcervo {
             }
 
             if (buscar(10) == null) {
-                listaItens.add(new com.biblioteca.basicos.Livro(
+                listaItens.add(new com.biblioteca.negocio.modelo.Livro(
                         "Felicidade Clandestina",
                         "Clarice Lispector",
                         10,
@@ -194,7 +194,7 @@ public class RepositorioAcervo implements IRepositorioAcervo {
             }
 
             if (buscar(11) == null) {
-                listaItens.add(new com.biblioteca.basicos.Livro(
+                listaItens.add(new com.biblioteca.negocio.modelo.Livro(
                         "Quarto de Despejo",
                         "Carolina Maria de Jesus",
                         11,
@@ -205,7 +205,7 @@ public class RepositorioAcervo implements IRepositorioAcervo {
             }
 
             if (buscar(12) == null) {
-                listaItens.add(new com.biblioteca.basicos.Livro(
+                listaItens.add(new com.biblioteca.negocio.modelo.Livro(
                         "Vidas Secas",
                         "Graciliano Ramos",
                         12,
@@ -216,7 +216,7 @@ public class RepositorioAcervo implements IRepositorioAcervo {
             }
 
             if (buscar(13) == null) {
-                listaItens.add(new com.biblioteca.basicos.Livro(
+                listaItens.add(new com.biblioteca.negocio.modelo.Livro(
                         "Drácula",
                         "Bram Stoker",
                         13,
@@ -227,7 +227,7 @@ public class RepositorioAcervo implements IRepositorioAcervo {
             }
 
             if (buscar(14) == null) {
-                listaItens.add(new com.biblioteca.basicos.Livro(
+                listaItens.add(new com.biblioteca.negocio.modelo.Livro(
                         "Mulherzinhas",
                         "LouisaMay Alcott",
                         14,
@@ -240,7 +240,7 @@ public class RepositorioAcervo implements IRepositorioAcervo {
             // artigos cadastrados
 
             if (buscar(16) == null) {
-                listaItens.add(new com.biblioteca.basicos.Artigo(
+                listaItens.add(new com.biblioteca.negocio.modelo.Artigo(
                         "Inteligência Artificial na Educação",
                         "Samyle Alves",
                         16,
@@ -253,7 +253,7 @@ public class RepositorioAcervo implements IRepositorioAcervo {
             }
 
             if (buscar(17) == null) {
-                listaItens.add(new com.biblioteca.basicos.Artigo(
+                listaItens.add(new com.biblioteca.negocio.modelo.Artigo(
                         "Segurança em Sistemas Distribuídos",
                         "Letícia de Melo Sobral",
                         17,
@@ -266,7 +266,7 @@ public class RepositorioAcervo implements IRepositorioAcervo {
             }
 
             if (buscar(18) == null) {
-                listaItens.add(new com.biblioteca.basicos.Artigo(
+                listaItens.add(new com.biblioteca.negocio.modelo.Artigo(
                         "Manguebeat: Diversidade na Música Pernambucana",
                         "José Teles",
                         18,
@@ -279,7 +279,7 @@ public class RepositorioAcervo implements IRepositorioAcervo {
             }
 
             if (buscar(19) == null) {
-                listaItens.add(new com.biblioteca.basicos.Artigo(
+                listaItens.add(new com.biblioteca.negocio.modelo.Artigo(
                         "O Movimento Armorial e a Identidade Cultural Nordestina",
                         "Ariano Suassuna",
                         19,
@@ -292,7 +292,7 @@ public class RepositorioAcervo implements IRepositorioAcervo {
             }
 
             if (buscar(20) == null) {
-                listaItens.add(new com.biblioteca.basicos.Artigo(
+                listaItens.add(new com.biblioteca.negocio.modelo.Artigo(
                         "Cinema Novo: Estética da Fome",
                         "Glauber Rocha",
                         20,
@@ -305,7 +305,7 @@ public class RepositorioAcervo implements IRepositorioAcervo {
             }
 
             if (buscar(21) == null) {
-                listaItens.add(new com.biblioteca.basicos.Artigo(
+                listaItens.add(new com.biblioteca.negocio.modelo.Artigo(
                         "A Dança Popular em Pernambuco: Frevo e Maracatu",
                         "Roberto Pereira",
                         21,
@@ -318,7 +318,7 @@ public class RepositorioAcervo implements IRepositorioAcervo {
             }
 
             if (buscar(22) == null) {
-                listaItens.add(new com.biblioteca.basicos.Artigo(
+                listaItens.add(new com.biblioteca.negocio.modelo.Artigo(
                         "Os Sertões e a Formação do Brasil Moderno",
                         "Euclides da Cunha",
                         22,
@@ -331,7 +331,7 @@ public class RepositorioAcervo implements IRepositorioAcervo {
             }
 
             if (buscar(23) == null) {
-                listaItens.add(new com.biblioteca.basicos.Artigo(
+                listaItens.add(new com.biblioteca.negocio.modelo.Artigo(
                         "Inteligência Artificial e Sociedade",
                         "Emerson Morais",
                         23,
@@ -344,7 +344,7 @@ public class RepositorioAcervo implements IRepositorioAcervo {
             }
 
             if (buscar(24) == null) {
-                listaItens.add(new com.biblioteca.basicos.Artigo(
+                listaItens.add(new com.biblioteca.negocio.modelo.Artigo(
                         "Tecnologia e Inclusão Digital no Brasil",
                         "Demi Getschko",
                         24,
@@ -357,7 +357,7 @@ public class RepositorioAcervo implements IRepositorioAcervo {
             }
 
             if (buscar(25) == null) {
-                listaItens.add(new com.biblioteca.basicos.Artigo(
+                listaItens.add(new com.biblioteca.negocio.modelo.Artigo(
                         "Avanços na Medicina Tropical no Brasil",
                         "Carlos Chagas",
                         25,
@@ -370,7 +370,7 @@ public class RepositorioAcervo implements IRepositorioAcervo {
             }
 
             if (buscar(26) == null) {
-                listaItens.add(new com.biblioteca.basicos.Artigo(
+                listaItens.add(new com.biblioteca.negocio.modelo.Artigo(
                         "A Importância da Fiocruz para a Saúde Pública",
                         "Nísia Trindade Lima",
                         26,
@@ -383,7 +383,7 @@ public class RepositorioAcervo implements IRepositorioAcervo {
             }
 
             if (buscar(27) == null) {
-                listaItens.add(new com.biblioteca.basicos.Artigo(
+                listaItens.add(new com.biblioteca.negocio.modelo.Artigo(
                         "Literatura Brasileira Contemporânea: Novas Vozes",
                         "Regina Dalcastagnè",
                         27,
@@ -396,7 +396,7 @@ public class RepositorioAcervo implements IRepositorioAcervo {
             }
 
             if (buscar(28) == null) {
-                listaItens.add(new com.biblioteca.basicos.Artigo(
+                listaItens.add(new com.biblioteca.negocio.modelo.Artigo(
                         "Ciência no Brasil: Desafios e Perspectivas",
                         "José Goldemberg",
                         28,
@@ -409,7 +409,7 @@ public class RepositorioAcervo implements IRepositorioAcervo {
             }
 
             if (buscar(29) == null) {
-                listaItens.add(new com.biblioteca.basicos.Artigo(
+                listaItens.add(new com.biblioteca.negocio.modelo.Artigo(
                         "O Frevo como Patrimônio Cultural Imaterial",
                         "Cláudia Valença",
                         29,
@@ -422,7 +422,7 @@ public class RepositorioAcervo implements IRepositorioAcervo {
             }
 
             if (buscar(30) == null) {
-                listaItens.add(new com.biblioteca.basicos.Artigo(
+                listaItens.add(new com.biblioteca.negocio.modelo.Artigo(
                         "Recife: Polo Tecnológico do Nordeste",
                         "Silvio Meira",
                         30,
@@ -435,7 +435,7 @@ public class RepositorioAcervo implements IRepositorioAcervo {
             }
 
             if (buscar(31) == null) {
-                listaItens.add(new com.biblioteca.basicos.Artigo(
+                listaItens.add(new com.biblioteca.negocio.modelo.Artigo(
                         "A Música Popular Brasileira e suas Transformações",
                         "Hermano Vianna",
                         31,
@@ -448,7 +448,7 @@ public class RepositorioAcervo implements IRepositorioAcervo {
             }
 
             if (buscar(32) == null) {
-                listaItens.add(new com.biblioteca.basicos.Artigo(
+                listaItens.add(new com.biblioteca.negocio.modelo.Artigo(
                         "Educação, Cultura e Sociedade no Nordeste Brasileiro",
                         "Paulo Freire",
                         32,

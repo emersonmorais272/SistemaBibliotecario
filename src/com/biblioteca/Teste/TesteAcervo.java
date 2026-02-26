@@ -1,9 +1,9 @@
 package com.biblioteca.Teste;
 
 import com.biblioteca.Fachada.Fachada;
-import com.biblioteca.basicos.Livro;
-import com.biblioteca.basicos.Artigo;
-import com.biblioteca.basicos.Acervo;
+import com.biblioteca.negocio.modelo.Livro;
+import com.biblioteca.negocio.modelo.Artigo;
+import com.biblioteca.negocio.modelo.Acervo;
 import java.util.List;
 
 public class TesteAcervo {

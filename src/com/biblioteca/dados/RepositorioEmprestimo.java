@@ -1,7 +1,6 @@
 package com.biblioteca.dados;
 
-import com.biblioteca.basicos.Emprestimo;
-import com.biblioteca.basicos.Usuario;
+import com.biblioteca.negocio.modelo.Emprestimo;
 
 import java.io.*;
 import java.util.ArrayList;

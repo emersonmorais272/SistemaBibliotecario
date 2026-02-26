@@ -1,11 +1,10 @@
 package com.biblioteca.Teste;
 
 import com.biblioteca.Fachada.Fachada;
-import com.biblioteca.basicos.Usuario;
-import com.biblioteca.basicos.Acervo;
-import com.biblioteca.basicos.Livro;
-import com.biblioteca.basicos.Emprestimo;
-import com.biblioteca.negocio.exceptions.UsuarioNaoEncontradoException;
+import com.biblioteca.negocio.modelo.Usuario;
+import com.biblioteca.negocio.modelo.Acervo;
+import com.biblioteca.negocio.modelo.Livro;
+import com.biblioteca.negocio.modelo.Emprestimo;
 
 import java.util.List;
 import java.util.Scanner;

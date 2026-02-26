@@ -1,8 +1,8 @@
 package com.biblioteca.Fachada;
 
-import com.biblioteca.basicos.Acervo;
-import com.biblioteca.basicos.Emprestimo;
-import com.biblioteca.basicos.Usuario;
+import com.biblioteca.negocio.modelo.Acervo;
+import com.biblioteca.negocio.modelo.Emprestimo;
+import com.biblioteca.negocio.modelo.Usuario;
 import com.biblioteca.dados.RepositorioAcervo; // Adicionado
 import com.biblioteca.dados.RepositorioEmprestimo;
 import com.biblioteca.dados.RepositorioUsuario;

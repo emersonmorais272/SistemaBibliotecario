@@ -1,6 +1,6 @@
 package com.biblioteca.dados;
 
-import com.biblioteca.basicos.Emprestimo;
+import com.biblioteca.negocio.modelo.Emprestimo;
 import java.util.List;
 
 public interface IRepositorioEmprestimo {

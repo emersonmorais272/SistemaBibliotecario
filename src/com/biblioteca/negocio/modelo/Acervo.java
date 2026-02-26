@@ -1,4 +1,4 @@
-package com.biblioteca.basicos;
+package com.biblioteca.negocio.modelo;
 
 import java.io.Serializable;
 

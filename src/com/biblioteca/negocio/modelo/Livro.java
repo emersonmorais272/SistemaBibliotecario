@@ -1,4 +1,4 @@
-package com.biblioteca.basicos;
+package com.biblioteca.negocio.modelo;
 
 import com.biblioteca.negocio.exceptions.TamanhoInvalidoException;
 import java.io.Serializable;
@@ -27,7 +27,6 @@ public class Livro extends Acervo implements Serializable {
     public String toString() {
         return  "\n-----------------------------\n" +
                 "Livro: " + super.toString() +
-                "\nisbn: " + isbn +
-                "\n-----------------------------";
+                "\nisbn: " + isbn;
     }
 }
