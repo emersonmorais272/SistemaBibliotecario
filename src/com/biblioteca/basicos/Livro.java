@@ -22,4 +22,12 @@ public class Livro extends Acervo implements Serializable {
         }
         this.isbn = isbn;
     }
+
+    @Override
+    public String toString() {
+        return  "\n-----------------------------\n" +
+                "Livro: " + super.toString() +
+                "\nisbn: " + isbn +
+                "\n-----------------------------";
+    }
 }

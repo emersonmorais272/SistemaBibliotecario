@@ -37,4 +37,13 @@ public class Artigo extends Acervo implements Serializable {
     public void setLocalPublicacao(String localPublicacao) {
         this.localPublicacao = localPublicacao;
     }
+
+    @Override
+    public String toString() {
+        return  "\n-----------------------------\n" +
+                "Artigo: " + super.toString() +
+                "\nMes de publicacao: " + mesPublicacao + '\n' +
+                "Edicao: " + edicao +
+                "\nLocal de publicacao: " + localPublicacao;
+    }
 }

@@ -53,6 +53,15 @@ public abstract class Acervo implements Serializable {
         return quantidade;
     }
 
+    @Override
+    public String toString() {
+        return  titulo + '\n' +
+                "Autor:" + autor + '\n' +
+                "Codigo:" + codigo +
+                "\n" + (disponivel ? "Disponivel" : "Indisponivel") +
+                "\nQuantidade:" + quantidade;
+    }
+
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }

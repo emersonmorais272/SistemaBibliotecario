@@ -18,6 +18,8 @@ public class TesteUsuario {
         Fachada fachada = Fachada.getInstance();
         List<Usuario> usuarios = fachada.listarUsuario();
 
+        System.out.println(fachada.listarAcervo());
+
         if(fachada.listarUsuario() == null){
             System.out.println("Ainda nao ha usuarios cadastrados");
         } else {
