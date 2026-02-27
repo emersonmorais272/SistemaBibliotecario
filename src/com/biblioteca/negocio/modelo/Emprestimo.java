@@ -50,4 +50,15 @@ public class Emprestimo implements Serializable {
         return item;
     }
 
+    public LocalDate getDataEmprestimo() {
+        return dataEmprestimo;
+    }
+
+    public LocalDate getDataPrevistaDevolucao() {
+        return dataPrevistaDevolucao;
+    }
+
+    public LocalDate getDataDevolucao() {
+        return dataDevolucao;
+    }
 }

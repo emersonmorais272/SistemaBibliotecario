@@ -11,6 +11,8 @@ import com.biblioteca.negocio.ControllerAcervo; // Adicionado
 import com.biblioteca.negocio.ControllerEmprestimo;
 
 import java.util.List;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Fachada {
 
@@ -37,7 +39,7 @@ public class Fachada {
         return instancia;
     }
 
-    // MÉTODOS DO ACERVO
+
 
     public void cadastrarItem(Acervo item) throws Exception {
         this.controladorAcervo.cadastrarItem(item);
@@ -85,11 +87,22 @@ public class Fachada {
     }
 
 
-    public Emprestimo realizarEmprestimo (Usuario usuario, Acervo item){
-        return this.controladorEmprestimo.realizarEmprestimo(usuario, item);
+
+
+
+
+    public Emprestimo realizarEmprestimo(Usuario usuario, Acervo item) {
+
+        int prazo = usuario.getPrazoEmprestimo();
+        LocalDate dataPrevista = LocalDate.now().plusDays(prazo);
+
+
+        return this.controladorEmprestimo.realizarEmprestimo(usuario, item, dataPrevista);
     }
 
-    public void finalizarDevolucao (String cpfUsuario) {
-        this.controladorEmprestimo.finalizarDevolucao(cpfUsuario);
+
+    public double finalizarDevolucao(String cpfUsuario, LocalDate dataEntregaReal) {
+
+        return this.controladorEmprestimo.finalizarDevolucao(cpfUsuario, dataEntregaReal);
     }
 }

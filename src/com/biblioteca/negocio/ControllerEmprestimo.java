@@ -7,6 +7,8 @@ import com.biblioteca.dados.RepositorioEmprestimo;
 import com.biblioteca.negocio.exceptions.EmprestimoNaoEncontradoException;
 import com.biblioteca.negocio.exceptions.ItemIndisponivelException;
 
+import java.time.LocalDate;
+
 
 public class ControllerEmprestimo {
 
@@ -17,20 +19,29 @@ public class ControllerEmprestimo {
         this.repoEmprestimo = repo;
     }
 
-    public void finalizarDevolucao (String  cpfUsuario) {
-
+    // No ControllerEmprestimo.java
+    public double finalizarDevolucao(String cpfUsuario, LocalDate dataEntregaReal) {
         Emprestimo emprestimo = this.repoEmprestimo.buscarPorCpf(cpfUsuario);
 
-        if (emprestimo == null) {
-            throw new EmprestimoNaoEncontradoException("Não há empréstimo ativo para este usuário.");
+        // Recupera a data prevista que foi calculada no ato do empréstimo
+        LocalDate prevista = emprestimo.getDataDevolucao();
+        double multaTotal = 0;
+
+        if (dataEntregaReal.isAfter(prevista)) {
+            // Calcula a diferença real de dias entre a entrega e a previsão
+            long diasAtraso = java.time.temporal.ChronoUnit.DAYS.between(prevista, dataEntregaReal);
+
+            // POLIMORFISMO: O Java decide se usa a conta de Aluno (x2) ou Professor (x3)
+            multaTotal = emprestimo.getUsuario().calcularMulta(diasAtraso);
         }
 
-        emprestimo.registrarDevolucao();
-
         emprestimo.getItem().setDisponivel(true);
+        this.repoEmprestimo.remover(emprestimo);
+
+        return multaTotal;
     }
 
-    public Emprestimo realizarEmprestimo(Usuario usuario, Acervo item) {
+    public Emprestimo realizarEmprestimo(Usuario usuario, Acervo item, LocalDate dataPrevista) {
 
         if (!item.isDisponivel()) {
 
