@@ -3,11 +3,11 @@ package com.biblioteca.Fachada;
 import com.biblioteca.negocio.modelo.Acervo;
 import com.biblioteca.negocio.modelo.Emprestimo;
 import com.biblioteca.negocio.modelo.Usuario;
-import com.biblioteca.dados.RepositorioAcervo; // Adicionado
+import com.biblioteca.dados.RepositorioAcervo;
 import com.biblioteca.dados.RepositorioEmprestimo;
 import com.biblioteca.dados.RepositorioUsuario;
 import com.biblioteca.negocio.ControllerUsuario;
-import com.biblioteca.negocio.ControllerAcervo; // Adicionado
+import com.biblioteca.negocio.ControllerAcervo;
 import com.biblioteca.negocio.ControllerEmprestimo;
 
 import java.util.List;
@@ -91,10 +91,6 @@ public class Fachada {
         this.controladorUsuario.Remover(cpf);
     }
 
-    // METODOS DE EMPRESTIMO
-
-
-
 
 
     public Emprestimo realizarEmprestimo(Usuario usuario, Acervo item) {
@@ -107,8 +103,8 @@ public class Fachada {
     }
 
 
-    public double finalizarDevolucao(String cpfUsuario, LocalDate dataEntregaReal) {
+    public double finalizarDevolucao(String cpfUsuario) {
 
-        return this.controladorEmprestimo.finalizarDevolucao(cpfUsuario, dataEntregaReal);
+        return this.controladorEmprestimo.finalizarDevolucao(cpfUsuario);
     }
 }

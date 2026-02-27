@@ -8,7 +8,7 @@ import java.util.List;
 
 public class TesteAcervo {
     public static void main(String[] args) {
-        // 1. Pegamos a instância da Fachada (Singleton)
+
         Fachada fachada = Fachada.getInstance();
 
         try {
