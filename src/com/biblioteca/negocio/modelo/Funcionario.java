@@ -19,6 +19,12 @@ public class Funcionario extends Usuario implements Serializable {
     }
 
     @Override
+    public String toString() {
+        return  "Funcionario: " + super.toString() +
+                "Codigo de acesso: " + this.codigoAcesso;
+    }
+
+    @Override
     public double calcularMulta(long diasAtraso) {
         return 0;
     }

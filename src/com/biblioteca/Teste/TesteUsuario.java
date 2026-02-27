@@ -1,6 +1,7 @@
 package com.biblioteca.Teste;
 
 import com.biblioteca.Fachada.Fachada;
+import com.biblioteca.negocio.exceptions.UsuarioNaoEncontradoException;
 import com.biblioteca.negocio.modelo.Usuario;
 import com.biblioteca.negocio.modelo.Acervo;
 import com.biblioteca.negocio.modelo.Livro;
@@ -8,106 +9,70 @@ import com.biblioteca.negocio.modelo.Emprestimo;
 
 import java.util.List;
 import java.util.Scanner;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 import static com.biblioteca.negocio.MetodosAuxiliares.lerEntradaValidada;
 
 public class TesteUsuario {
-    public static void main(String[] args) {
+    public static void main(String[] args){
+
         Fachada fachada = Fachada.getInstance();
-        Scanner sc = new Scanner(System.in);
-        DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        List<Usuario> usuarios = fachada.listarUsuario();
 
-
-        boolean continuar = true;
-        while (continuar) {
-            System.out.println("\n--- SISTEMA BIBLIOTECARIO UFAPE ---");
-            System.out.println("1. Cadastrar Aluno");
-            System.out.println("2. Realizar Emprestimo");
-            System.out.println("3. Devolver Livro");
-            System.out.println("0. Sair");
-            System.out.print("Escolha uma opcao: ");
-
-            int opcaoMenu = sc.nextInt();
-            sc.nextLine(); // Limpa buffer
-
-            switch (opcaoMenu) {
-                case 1:
-                    System.out.println("\n--- Novo Cadastro ---");
-                    String nome = lerEntradaValidada("Nome:", sc);
-                    String cpf = lerEntradaValidada("CPF (11 digitos):", 11, sc);
-                    String anoN = lerEntradaValidada("Ano Nascimento:", 4, sc);
-                    String mat = lerEntradaValidada("Matricula:", 8, sc);
-                    String curso = lerEntradaValidada("Curso:", sc);
-                    fachada.cadastrarAluno(nome, cpf, anoN, mat, curso);
-                    System.out.println("Usuario cadastrado com sucesso.");
-                    break;
-
-                case 2:
-                    System.out.print("\nInforme o CPF do usuario: ");
-                    String cpfBusca = sc.nextLine();
-                    Usuario user = fachada.buscarUsuario(cpfBusca);
-
-                    if (user != null) {
-                        List<Acervo> catalogo = fachada.listarAcervo();
-                        System.out.println("\n--- ACERVO DISPONIVEL ---");
-                        for (int i = 0; i < catalogo.size(); i++) {
-                            Acervo item = catalogo.get(i);
-                            String status = item.isDisponivel() ? "[Disponivel]" : "[Indisponivel]";
-                            System.out.println((i + 1) + ". " + status + " " + item.getTitulo());
-                        }
-
-                        System.out.print("Selecione o numero do livro: ");
-                        int escolhaLivro = sc.nextInt();
-                        sc.nextLine();
-
-                        if (escolhaLivro > 0 && escolhaLivro <= catalogo.size()) {
-                            Acervo selecionado = catalogo.get(escolhaLivro - 1);
-                            try {
-                                fachada.realizarEmprestimo(user, selecionado);
-                                LocalDate dataDevolucao = LocalDate.now().plusDays(user.getPrazoEmprestimo());
-                                System.out.println("Emprestimo realizado.");
-                                System.out.println("DATA DE DEVOLUCAO: " + dataDevolucao.format(formatador));
-                            } catch (Exception e) {
-                                System.err.println("Erro: " + e.getMessage());
-                            }
-                        }
-                    } else {
-                        System.err.println("Usuario nao encontrado.");
-                    }
-                    break;
-
-                case 3:
-                    System.out.print("Informe o CPF para devolucao: ");
-                    String cpfDev = sc.nextLine();
-
-                    System.out.print("Informe a data de entrega (dd/MM/yyyy): ");
-                    String dataInput = sc.nextLine();
-                    LocalDate dataEntregaReal = LocalDate.parse(dataInput, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-
-                    try {
-                        // Envia a data digitada para o controlador calcular a multa
-                        double multaTotal = fachada.finalizarDevolucao(cpfDev, dataEntregaReal);
-
-                        if (multaTotal > 0) {
-                            System.out.printf("Devolucao realizada com atraso. Valor da multa: R$ %.2f%n", multaTotal);
-                        } else {
-                            System.out.println("Devolucao no prazo. Sem multa.");
-                        }
-                    } catch (Exception e) {
-                        System.err.println("Erro: " + e.getMessage());
-                    }
-                    break;
-
-                case 0:
-                    continuar = false;
-                    break;
-
-                default:
-                    System.out.println("Opcao invalida.");
-            }
+        try {
+            fachada.removerUsuario("12312312323");
+        } catch (UsuarioNaoEncontradoException e){
+            System.err.println("ERRO: " + e.getMessage());
         }
-        System.out.println("Sistema encerrado.");
+        System.out.println(fachada.buscarUsuario("12312312323"));
+        System.out.println(fachada.listarAcervo());
+
+        if(fachada.listarUsuario() == null){
+            System.out.println("Ainda nao ha usuarios cadastrados");
+        } else {
+            System.out.println(fachada.listarUsuario());
+        }
+        Scanner sc = new Scanner(System.in);
+        String nome = null;
+        String cpf = null;
+        String anoN = null;
+        String matricula = null;
+        String curso = null;
+
+        nome = lerEntradaValidada("Qual eh o nome?", sc);
+        cpf = lerEntradaValidada("Qual eh o CPF", 11, sc);
+        anoN = lerEntradaValidada("Qual eh o ano de nascimento", 4, sc);
+        matricula = lerEntradaValidada("Qual eh a matricula", 8, sc);
+        curso = lerEntradaValidada("Qual eh o curso matriculado?", sc);
+
+        fachada.cadastrarAluno(nome, cpf, anoN, matricula, curso);
+        Usuario user = fachada.buscarUsuario(cpf);
+
+        if (user != null) {
+            System.out.println("Usuário cadastrado: " + user.toString());
+
+            // CORREÇÃO AQUI: Adicionado o parâmetro "Herbert Schildt" (Autor)
+            // Agora são 6 parâmetros: Título, Autor, Código, Disponível, Quantidade, ISBN
+            Acervo livro = new Livro("Java para Iniciantes", "Herbert Schildt", 101, true, 1, "9788573933758");
+
+            System.out.println("\nStatus inicial do livro: " + (livro.isDisponivel() ? "Disponível" : "Indisponível"));
+
+            try {
+                System.out.println("Tentando realizar empréstimo...");
+                Emprestimo emp = fachada.realizarEmprestimo(user, livro);
+
+                System.out.println("Empréstimo realizado com sucesso!");
+                System.out.println("Status do livro agora: " + (livro.isDisponivel() ? "Disponível" : "Indisponível"));
+
+                // 3. Testar a Devolução
+                System.out.println("\nFinalizando devolução para o CPF: " + cpf);
+                fachada.finalizarDevolucao(cpf);
+                System.out.println("Status do livro após devolução: " + (livro.isDisponivel() ? "Disponível" : "Indisponível"));
+
+            } catch (Exception e) {
+                System.err.println("ERRO NO PROCESSO: " + e.getMessage());
+            }
+        } else {
+            System.err.println("Erro: Usuário não pôde ser cadastrado/encontrado.");
+        }
     }
 }
