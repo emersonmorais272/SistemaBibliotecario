@@ -21,43 +21,39 @@ public class ControllerEmprestimo {
 
 
     public double finalizarDevolucao(String cpfUsuario) {
-
         Emprestimo emprestimo = this.repoEmprestimo.buscarPorCpf(cpfUsuario);
 
         if (emprestimo == null) {
-            return 0;
+            throw new EmprestimoNaoEncontradoException("Nenhum empréstimo ativo para este CPF.");
         }
 
-        LocalDate dataEntregaReal = LocalDate.now();
-        LocalDate prevista = emprestimo.getDataDevolucao();
+        LocalDate hoje = LocalDate.now();
+        LocalDate prevista = emprestimo.getDataPrevistaDevolucao();
         double multaTotal = 0;
 
-
-        if (dataEntregaReal.isAfter(prevista)) {
-            long diasAtraso = java.time.temporal.ChronoUnit.DAYS.between(prevista, dataEntregaReal);
-
+        // Comparação correta de atraso
+        if (hoje.isAfter(prevista)) {
+            long diasAtraso = java.time.temporal.ChronoUnit.DAYS.between(prevista, hoje);
             multaTotal = emprestimo.getUsuario().calcularMulta(diasAtraso);
         }
 
-
+        // Atualiza o estado do item antes de remover o registro
         emprestimo.getItem().setDisponivel(true);
         this.repoEmprestimo.remover(emprestimo);
 
         return multaTotal;
     }
 
-    public Emprestimo realizarEmprestimo(Usuario usuario, Acervo item, LocalDate dataPrevista) {
-
+    public Emprestimo realizarEmprestimo(Usuario usuario, Acervo item) {
         if (!item.isDisponivel()) {
-
             throw new ItemIndisponivelException("O item selecionado não está disponível.");
         }
 
+        // A regra de negócio (prazo) é extraída do usuário pelo controlador
         int prazo = usuario.getPrazoEmprestimo();
         Emprestimo emprestimo = new Emprestimo(usuario, item, prazo);
 
         item.setDisponivel(false);
-
         this.repoEmprestimo.adicionar(emprestimo);
 
         return emprestimo;

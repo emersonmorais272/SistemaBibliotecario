@@ -11,8 +11,6 @@ import com.biblioteca.negocio.ControllerAcervo;
 import com.biblioteca.negocio.ControllerEmprestimo;
 
 import java.util.List;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 public class Fachada {
 
@@ -40,7 +38,6 @@ public class Fachada {
     }
 
 
-
     public void cadastrarItem(Acervo item) throws Exception {
         this.controladorAcervo.cadastrarItem(item);
     }
@@ -61,29 +58,28 @@ public class Fachada {
         return this.controladorAcervo.listarTudo();
     }
 
-    // METODOS DO USUARIO
 
-    public void cadastrarAluno(String Nome, String CPF, String anoNascimento, String matricula, String Curso){
-        this.controladorUsuario.Cadastrar(Nome, CPF, anoNascimento, matricula, Curso);
+    public void cadastrarAluno(String nome, String cpf, String anoNasc, String matricula, String curso){
+        this.controladorUsuario.Cadastrar(nome, cpf, anoNasc, matricula, curso);
     }
 
     public void cadastrarProfessor(String nome, String cpf, String nasc, String siape) {
         this.controladorUsuario.Cadastrar(nome, cpf, nasc, siape);
     }
 
-    public void atualizarUsuario(String CPF, String Nome, String anoNascimento, String Matricula, String Curso){
-        this.controladorUsuario.Atualizar(CPF, Nome, anoNascimento, Matricula, Curso);
+    public void atualizarUsuario(String cpf, String nome, String anoNasc, String matricula, String curso){
+        this.controladorUsuario.Atualizar(cpf, nome, anoNasc, matricula, curso);
     }
 
-    public Usuario buscarUsuario (String CPF){
-        return this.controladorUsuario.Buscar(CPF);
+    public Usuario buscarUsuario(String cpf){
+        return this.controladorUsuario.Buscar(cpf);
     }
 
-    public Usuario buscarCodigo (int codigo) {
+    public Usuario buscarCodigo(int codigo) {
         return this.controladorUsuario.buscarPorCodigo(codigo);
     }
 
-    public List<Usuario> listarUsuario (){
+    public List<Usuario> listarUsuario(){
         return this.controladorUsuario.Listar();
     }
 
@@ -94,17 +90,11 @@ public class Fachada {
 
 
     public Emprestimo realizarEmprestimo(Usuario usuario, Acervo item) {
-
-        int prazo = usuario.getPrazoEmprestimo();
-        LocalDate dataPrevista = LocalDate.now().plusDays(prazo);
-
-
-        return this.controladorEmprestimo.realizarEmprestimo(usuario, item, dataPrevista);
+        // A Fachada apenas solicita a operação; o Controller aplica prazos e validações
+        return this.controladorEmprestimo.realizarEmprestimo(usuario, item);
     }
 
-
     public double finalizarDevolucao(String cpfUsuario) {
-
         return this.controladorEmprestimo.finalizarDevolucao(cpfUsuario);
     }
 }
