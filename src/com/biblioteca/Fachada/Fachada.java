@@ -59,6 +59,7 @@ public class Fachada {
         return this.controladorAcervo.listarTudo();
     }
 
+    // METODOS DO USUARIO
 
     public void cadastrarAluno(String Nome, String CPF, String anoNascimento, String matricula, String Curso){
         this.controladorUsuario.Cadastrar(Nome, CPF, anoNascimento, matricula, Curso);
@@ -76,6 +77,10 @@ public class Fachada {
         return this.controladorUsuario.Buscar(CPF);
     }
 
+    public Usuario buscarCodigo (int codigo) {
+        return this.controladorUsuario.buscarPorCodigo(codigo);
+    }
+
     public List<Usuario> listarUsuario (){
         return this.controladorUsuario.Listar();
     }
@@ -84,6 +89,7 @@ public class Fachada {
         this.controladorUsuario.Remover(cpf);
     }
 
+    // METODOS DE EMPRESTIMO
 
     public Emprestimo realizarEmprestimo (Usuario usuario, Acervo item){
         return this.controladorEmprestimo.realizarEmprestimo(usuario, item);

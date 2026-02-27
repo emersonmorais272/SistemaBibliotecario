@@ -1,6 +1,7 @@
 package com.biblioteca.negocio;
 
 import com.biblioteca.negocio.modelo.Aluno;
+import com.biblioteca.negocio.modelo.Funcionario;
 import com.biblioteca.negocio.modelo.Professor;
 import com.biblioteca.negocio.modelo.Usuario;
 import com.biblioteca.dados.RepositorioUsuario;
@@ -68,6 +69,17 @@ public class ControllerUsuario {
         }
     }
 
+    public void Cadastrar(String Nome, String CPF,  String anoNascimento, int codigoAcesso){
+        VerificacaoUsuario(Nome, CPF, anoNascimento);
+        if(String.valueOf(codigoAcesso).length() != 8)
+            throw new TamanhoInvalidoException("A senha deve conter 8 caracteres");
+
+        Usuario novoUsuario = new Funcionario(codigoAcesso, Nome, CPF, anoNascimento);
+        novoUsuario.setIdade(2026 - Integer.parseInt(anoNascimento));
+        this.repoUsuario.Adicionar(novoUsuario);
+
+    }
+
     public void Cadastrar(String Nome, String CPF, String anoNascimento, String SIAPE){
 
         VerificacaoUsuario(Nome, CPF, anoNascimento);
@@ -97,6 +109,18 @@ public class ControllerUsuario {
         return u;
     }
 
+    public Funcionario buscarPorCodigo(int codigo) {
+        for (Usuario u : this.repoUsuario.Listar()) {
+            if (u instanceof Funcionario) {
+                Funcionario f = (Funcionario) u;
+                if (f.getCodigoAcesso() == codigo) {
+                    return f;
+                }
+            }
+        }
+        return null;
+    }
+
     public List<Usuario> Listar(){
         return this.repoUsuario.Listar();
     }
@@ -116,6 +140,17 @@ public class ControllerUsuario {
         Usuario U = this.repoUsuario.Buscar(CPF);
         U = new Aluno(Nome, U.getCPF(), anoNascimento, Matricula, Curso);
         this.repoUsuario.Atualizar(U);
+    }
+
+    public void Atualizar(String Nome, String CPF,  String anoNascimento, int codigoAcesso){
+        VerificacaoUsuario(Nome, CPF, anoNascimento);
+        if(String.valueOf(codigoAcesso).length() != 8)
+            throw new TamanhoInvalidoException("A senha deve conter 8 caracteres");
+
+        Usuario u = new Funcionario(codigoAcesso, Nome, CPF, anoNascimento);
+        u.setIdade(2026 - Integer.parseInt(anoNascimento));
+        this.repoUsuario.Atualizar(u);
+
     }
 
     public void Atualizar(String CPF, String Nome, String anoNascimento, String siape) {
