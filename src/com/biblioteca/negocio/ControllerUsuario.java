@@ -18,11 +18,8 @@ public class ControllerUsuario {
         this.repoUsuario = repo;
     }
 
-
-
-    public void Cadastrar(String Nome, String CPF, String anoNascimento, String Matricula, String Curso){
-
-        if(MetodosAuxiliares.temNumero(Nome) || Nome.isBlank()){
+    private void VerificacaoUsuario(String Nome, String CPF, String anoNascimento) {
+        if(MetodosAuxiliares.temNumero(Nome) || MetodosAuxiliares.temCaractereEspecial(Nome)){
             throw new FormatoInvalidoException("O nome é formado apenas por letras");
         }
 
@@ -34,12 +31,32 @@ public class ControllerUsuario {
             throw new EntradaInvalidaException("O CPF ja esta cadastrado");
         }
 
+        VerificacaoIdade(anoNascimento);
+    }
+
+    private void VerificacaoIdade(String anoNascimento) {
         if(anoNascimento.length() != 4 || !MetodosAuxiliares.temNumero(anoNascimento)){
             throw new TamanhoInvalidoException("O ano de nascimento deve conter 4 numeros");
         } else if(MetodosAuxiliares.temLetra(anoNascimento)){
             throw new FormatoInvalidoException("O ano de nascimento nao deve conter letras");
+        } else if(Integer.parseInt(anoNascimento) < 1900 || Integer.parseInt(anoNascimento) > 2026){
+            throw new EntradaInvalidaException("Ano de nascimento invalido");
         }
+    }
 
+    public void Cadastrar(String Nome, String CPF, String anoNascimento, String Matricula, String Curso){
+
+        VerificacaoUsuario(Nome, CPF, anoNascimento);
+
+        VerificacaoAluno(Matricula, Curso);
+
+        Usuario novoUsuario = new Aluno(Nome.toLowerCase(), CPF, anoNascimento, Matricula, Curso);
+        novoUsuario.setIdade(2026 - Integer.parseInt(anoNascimento));
+        this.repoUsuario.Adicionar(novoUsuario);
+
+    }
+
+    private void VerificacaoAluno(String Matricula, String Curso) {
         if(MetodosAuxiliares.temLetra(Matricula) || Matricula.isBlank()){
             throw new FormatoInvalidoException("A matricula deve conter apenas numeros");
         } else if(Matricula.length() != 8){
@@ -49,30 +66,11 @@ public class ControllerUsuario {
         if(MetodosAuxiliares.temNumero(Curso) || Curso.isBlank()){
             throw new FormatoInvalidoException("O Curso é formado apenas por letras");
         }
-
-        Usuario novoUsuario = new Aluno(Nome.toLowerCase(), CPF, anoNascimento, Matricula, Curso);
-        novoUsuario.setIdade(2026 - Integer.parseInt(anoNascimento));
-        this.repoUsuario.Adicionar(novoUsuario);
-
     }
 
     public void Cadastrar(String Nome, String CPF, String anoNascimento, String SIAPE){
 
-        if(MetodosAuxiliares.temNumero(Nome) || Nome.isBlank()){
-            throw new FormatoInvalidoException("O nome é formado apenas por letras");
-        }
-
-        if(MetodosAuxiliares.temLetra(CPF) || CPF.isBlank()){
-            throw new FormatoInvalidoException("O CPF deve conter apenas numeros");
-        } else if(CPF.length() != 11){
-            throw new TamanhoInvalidoException("O CPF deve conter 11 numeros");
-        }
-
-        if(anoNascimento.length() != 4 || !MetodosAuxiliares.temNumero(anoNascimento)){
-            throw new TamanhoInvalidoException("O ano de nascimento deve conter 4 numeros");
-        } else if(MetodosAuxiliares.temLetra(anoNascimento)){
-            throw new FormatoInvalidoException("O ano de nascimento nao deve conter letras");
-        }
+        VerificacaoUsuario(Nome, CPF, anoNascimento);
 
         if(MetodosAuxiliares.temLetra(SIAPE) || SIAPE.isBlank()){
             throw new FormatoInvalidoException("A matricula deve conter apenas numeros");
@@ -86,14 +84,12 @@ public class ControllerUsuario {
 
     }
 
-    public String Remover(String CPF){
+    public void Remover(String CPF){
         Usuario u = this.repoUsuario.Buscar(CPF);
         if(u != null){
-            String nome = u.getNome();
             this.repoUsuario.Remover(u);
-            return (nome + " removido com sucesso!");
         }
-        return "Usuario nao existe!";
+        throw new UsuarioNaoEncontradoException("CPF invalido! Nao foi possivel localizar o CPF");
     }
 
     public Usuario Buscar(String CPF){
@@ -110,25 +106,13 @@ public class ControllerUsuario {
             throw new UsuarioNaoEncontradoException("Usuario nao encontrado");
         }
 
-        if (MetodosAuxiliares.temNumero(Nome) || Nome.isBlank()) {
+        if(MetodosAuxiliares.temNumero(Nome) || MetodosAuxiliares.temCaractereEspecial(Nome)){
             throw new FormatoInvalidoException("O nome é formado apenas por letras");
         }
 
-        if (anoNascimento.length() != 4 || !MetodosAuxiliares.temNumero(anoNascimento)) {
-            throw new TamanhoInvalidoException("O ano de nascimento deve conter 4 numeros");
-        } else if (MetodosAuxiliares.temLetra(anoNascimento)) {
-            throw new FormatoInvalidoException("O ano de nascimento nao deve conter letras");
-        }
+        VerificacaoIdade(anoNascimento);
 
-        if (MetodosAuxiliares.temLetra(Matricula) || Matricula.isBlank()) {
-            throw new FormatoInvalidoException("A matricula deve conter apenas numeros");
-        } else if (Matricula.length() != 8) {
-            throw new TamanhoInvalidoException("A matricula deve possuir 8 numeros");
-        }
-
-        if (MetodosAuxiliares.temNumero(Curso) || Curso.isBlank()) {
-            throw new FormatoInvalidoException("O Curso é formado apenas por letras");
-        }
+        VerificacaoAluno(Matricula, Curso);
         Usuario U = this.repoUsuario.Buscar(CPF);
         U = new Aluno(Nome, U.getCPF(), anoNascimento, Matricula, Curso);
         this.repoUsuario.Atualizar(U);
@@ -143,11 +127,7 @@ public class ControllerUsuario {
             throw new FormatoInvalidoException("O nome é formado apenas por letras");
         }
 
-        if (anoNascimento.length() != 4 || !MetodosAuxiliares.temNumero(anoNascimento)) {
-            throw new TamanhoInvalidoException("O ano de nascimento deve conter 4 numeros");
-        } else if (MetodosAuxiliares.temLetra(anoNascimento)) {
-            throw new FormatoInvalidoException("O ano de nascimento nao deve conter letras");
-        }
+        VerificacaoIdade(anoNascimento);
 
         if (MetodosAuxiliares.temLetra(siape) || siape.isBlank()) {
             throw new FormatoInvalidoException("A matricula deve conter apenas numeros");

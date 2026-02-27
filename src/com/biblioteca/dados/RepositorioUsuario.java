@@ -30,6 +30,7 @@ public class RepositorioUsuario implements IRepositorioUsuario {
 
         for(int i = 0; i < this.ListaUsuarios.size(); i++){
             if(this.ListaUsuarios.get(i).getCPF().equals(usuarioAtualizado.getCPF())){
+                String temp = this.ListaUsuarios.get(i).getCPF();
                 this.ListaUsuarios.set(i, usuarioAtualizado);
                 encontrou = true;
                 break;

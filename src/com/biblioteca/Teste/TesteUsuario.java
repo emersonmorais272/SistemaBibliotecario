@@ -1,6 +1,7 @@
 package com.biblioteca.Teste;
 
 import com.biblioteca.Fachada.Fachada;
+import com.biblioteca.negocio.exceptions.UsuarioNaoEncontradoException;
 import com.biblioteca.negocio.modelo.Usuario;
 import com.biblioteca.negocio.modelo.Acervo;
 import com.biblioteca.negocio.modelo.Livro;
@@ -17,6 +18,12 @@ public class TesteUsuario {
         Fachada fachada = Fachada.getInstance();
         List<Usuario> usuarios = fachada.listarUsuario();
 
+        try {
+            fachada.removerUsuario("12312312323");
+        } catch (UsuarioNaoEncontradoException e){
+            System.err.println("ERRO: " + e.getMessage());
+        }
+        System.out.println(fachada.buscarUsuario("12312312323"));
         System.out.println(fachada.listarAcervo());
 
         if(fachada.listarUsuario() == null){

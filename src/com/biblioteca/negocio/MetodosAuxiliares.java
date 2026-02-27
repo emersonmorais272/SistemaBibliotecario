@@ -1,5 +1,6 @@
 package com.biblioteca.negocio;
 
+import com.biblioteca.negocio.exceptions.EntradaInvalidaException;
 import com.biblioteca.negocio.exceptions.FormatoInvalidoException;
 import com.biblioteca.negocio.exceptions.TamanhoInvalidoException;
 
@@ -10,6 +11,18 @@ public class MetodosAuxiliares {
     public static boolean temNumero(String s) {
         for (char c : s.toCharArray()) {
             if (Character.isDigit(c)) return true;
+        }
+        return false;
+    }
+
+    public static boolean temCaractereEspecial(String s) {
+        for (char c : s.toCharArray()) {
+            if (!(c >= '0' && c <= '9') &&
+                    !(c >= 'a' && c <= 'z') &&
+                    !(c >= 'A' && c <= 'Z') &&
+                    c != ' ') {
+                return true;
+            }
         }
         return false;
     }
@@ -63,6 +76,8 @@ public class MetodosAuxiliares {
                 if(MetodosAuxiliares.temNumero(entrada))
                     throw new FormatoInvalidoException("ENTRADA INVALIDA: DEVE CONTER APENAS LETRAS");
 
+                if(MetodosAuxiliares.temCaractereEspecial(entrada))
+                    throw new FormatoInvalidoException("ENTRADA INVALIDA: CARACTERES NAO SAO PERMITIDOS! APENAS LETRAS");
                 ehValido = true;
 
             } catch (FormatoInvalidoException e) {
