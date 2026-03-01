@@ -9,5 +9,7 @@ module com.biblioteca {
     // abre os modelos para as TableViews conseguirem ler os dados dos objetos
     opens com.biblioteca.negocio.modelo to javafx.base;
 
+    opens com.biblioteca.fachada to javafx.fxml;
+
     exports com.biblioteca.interfacebiblioteca;
 }
