@@ -1,4 +1,4 @@
-package com.biblioteca.Fachada;
+package com.biblioteca.fachada;
 
 import com.biblioteca.negocio.modelo.Acervo;
 import com.biblioteca.negocio.modelo.Emprestimo;
@@ -90,7 +90,7 @@ public class Fachada {
 
 
     public Emprestimo realizarEmprestimo(Usuario usuario, Acervo item) {
-        // A Fachada apenas solicita a operação; o Controller aplica prazos e validações
+        // A fachada apenas solicita a operação; o Controller aplica prazos e validações
         return this.controladorEmprestimo.realizarEmprestimo(usuario, item);
     }
 

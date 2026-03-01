@@ -1,6 +1,6 @@
-package com.biblioteca.Teste;
+package com.biblioteca.teste;
 
-import com.biblioteca.Fachada.Fachada;
+import com.biblioteca.fachada.Fachada;
 import com.biblioteca.negocio.exceptions.UsuarioNaoEncontradoException;
 import com.biblioteca.negocio.modelo.Usuario;
 import com.biblioteca.negocio.modelo.Acervo;

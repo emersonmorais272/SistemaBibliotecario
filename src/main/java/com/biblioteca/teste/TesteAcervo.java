@@ -1,6 +1,6 @@
-package com.biblioteca.Teste;
+package com.biblioteca.teste;
 
-import com.biblioteca.Fachada.Fachada;
+import com.biblioteca.fachada.Fachada;
 import com.biblioteca.negocio.modelo.Livro;
 import com.biblioteca.negocio.modelo.Artigo;
 import com.biblioteca.negocio.modelo.Acervo;
@@ -18,7 +18,7 @@ public class TesteAcervo {
             Livro l1 = new Livro("O Senhor dos Anéis", "J.R.R. Tolkien", 101, true, 5, "1234567890123");
             Artigo a1 = new Artigo("IA na Educação", "João Silva", 202, true, 10, "Março", 15, "Revista Tech");
 
-            // 3. Cadastrando via Fachada
+            // 3. Cadastrando via fachada
             fachada.cadastrarItem(l1);
             fachada.cadastrarItem(a1);
             System.out.println("Itens cadastrados com sucesso!");
