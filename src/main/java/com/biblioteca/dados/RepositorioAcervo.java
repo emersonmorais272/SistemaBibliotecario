@@ -1,6 +1,9 @@
 package com.biblioteca.dados;
 
-import com.biblioteca.negocio.modelo.Acervo;
+import com.biblioteca.negocio.modelo.*;
+import com.opencsv.bean.StatefulBeanToCsv;
+import com.opencsv.bean.StatefulBeanToCsvBuilder;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +23,7 @@ public class RepositorioAcervo implements IRepositorioAcervo {
     public void adicionar(Acervo item) {
         this.listaItens.add(item);
         this.salvarArquivo();
+        this.SalvarCSV(listaItens);
     }
 
     @Override
@@ -57,6 +61,21 @@ public class RepositorioAcervo implements IRepositorioAcervo {
         return this.listaItens;
     }
 
+    public void SalvarCSV(List<Acervo> lista) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("DadosAcervo.csv"))) {
+            writer.println("Tipo;Titulo;Autor;Codigo;Quantidade;ISBN;Local Publicaca;Edicao");
+            for (Acervo item : lista) {
+                if(item instanceof Livro){
+                    writer.println(item.getClass().getSimpleName() + ";" + item.getTitulo() + ";" + item.getAutor() + ";" + item.getCodigo() + ";" + item.getQuantidade() + ";" + ((Livro) item).getIsbn() + ";" + "NaN" + ";" + "NaN" + ";");
+                } else if(item instanceof Artigo){
+                    writer.println(item.getClass().getSimpleName() + ";" + item.getTitulo() + ";" + item.getAutor() + ";" + item.getCodigo() + ";" + item.getQuantidade() + ";" + "NaN" + ";" + ((Artigo) item).getLocalPublicacao() + ";" + ((Artigo) item).getEdicao());
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Erro ao salvar: " + e.getMessage());
+        }
+    }
+
     private void salvarArquivo() {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(PATH))) {
             oos.writeObject(this.listaItens);
@@ -77,6 +96,7 @@ public class RepositorioAcervo implements IRepositorioAcervo {
             }
         }
     }
+
     private void inicializarAcervoPadrao() {
 
         try {

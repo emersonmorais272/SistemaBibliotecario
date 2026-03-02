@@ -1,5 +1,7 @@
 package com.biblioteca.dados;
 
+import com.biblioteca.negocio.modelo.Aluno;
+import com.biblioteca.negocio.modelo.Professor;
 import com.biblioteca.negocio.modelo.Usuario;
 import com.biblioteca.negocio.exceptions.UsuarioNaoEncontradoException;
 
@@ -15,9 +17,11 @@ public class RepositorioUsuario implements IRepositorioUsuario {
         this.CarregarArquivo();
     }
 
+
     public void Adicionar(Usuario novoCadastro){
         this.ListaUsuarios.add(novoCadastro);
         this.SalvarArquivo(ListaUsuarios);
+        this.SalvarCSV(ListaUsuarios);
     }
 
     public void Remover(Usuario u){
@@ -64,6 +68,21 @@ public class RepositorioUsuario implements IRepositorioUsuario {
             e.printStackTrace();
         }
 
+    }
+
+    public void SalvarCSV(List<Usuario> lista) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("DadosUsuario.csv"))) {
+            writer.println("Tipo;Nome;CPF;Idade;Matricula/SIAPE");
+            for (Usuario item : lista) {
+                if(item instanceof Aluno){
+                    writer.println(item.getClass().getSimpleName() + ";" + item.getNome() + ";" + item.getCPF() + ";" + item.getIdade() + ";" + ((Aluno) item).getMatricula() + ";");
+                } else if(item instanceof Professor){
+                    writer.println(item.getClass().getSimpleName() + ";" + item.getNome() + ";" + item.getCPF() + ";" + item.getIdade() + ";" + ((Professor) item).getSiape() + ";");
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Erro ao salvar: " + e.getMessage());
+        }
     }
 
     private void CarregarArquivo() {

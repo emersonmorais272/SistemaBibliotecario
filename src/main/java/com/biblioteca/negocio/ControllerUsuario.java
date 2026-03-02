@@ -147,7 +147,7 @@ public class ControllerUsuario {
         if(String.valueOf(codigoAcesso).length() != 8)
             throw new TamanhoInvalidoException("A senha deve conter 8 caracteres");
 
-        Usuario u = new Funcionario(codigoAcesso, Nome, CPF, an oNascimento);
+        Usuario u = new Funcionario(codigoAcesso, Nome, CPF, anoNascimento);
         u.setIdade(2026 - Integer.parseInt(anoNascimento));
         this.repoUsuario.Atualizar(u);
 

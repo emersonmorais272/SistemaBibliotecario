@@ -1,0 +1,40 @@
+Tipo;Titulo;Autor;Codigo;Quantidade;ISBN;Local Publicaca;Edicao
+Livro;A Hora da estrela;Clarice Lispector;1;5;9788532508126;NaN;NaN;
+Livro;Noites Brancas;Fiódor Dostoiévski;2;3;9788573263350;NaN;NaN;
+Livro;A Metamorfose;Franz Kafka;3;4;9786555985900;NaN;NaN;
+Livro;A Redoma de Vidro;Sylvia Plath;4;6;9788525068460;NaN;NaN;
+Livro;O Processo;Franz Kafka;5;3;978853907438;NaN;NaN;
+Livro;Água Viva;Clarice Lispector;6;2;9786555320213;NaN;NaN;
+Livro;Jantar Secreto;Raphael Montes;7;4;9788535928358;NaN;NaN;
+Livro;O Avesso da pele;Jeferson Tenório;8;5;9788535933390;NaN;NaN;
+Livro;Capitães da Areia;Jorge Amado;9;3;9788535914061;NaN;NaN;
+Livro;Felicidade Clandestina;Clarice Lispector;10;2;9788532531735;NaN;NaN;
+Livro;Quarto de Despejo;Carolina Maria de Jesus;11;5;9788508171279;NaN;NaN;
+Livro;Vidas Secas;Graciliano Ramos;12;8;9788501114785;NaN;NaN;
+Livro;Drácula;Bram Stoker;13;3;9788595201569;NaN;NaN;
+Livro;Mulherzinhas;LouisaMay Alcott;14;2;9788544002124;NaN;NaN;
+Artigo;Inteligência Artificial na Educação;Samyle Alves;16;5;NaN;Revista UFAPE;12
+Artigo;Segurança em Sistemas Distribuídos;Letícia de Melo Sobral;17;3;NaN;Revista UFAPE;8
+Artigo;Manguebeat: Diversidade na Música Pernambucana;José Teles;18;3;NaN;Revista Continente (PE);1
+Artigo;O Movimento Armorial e a Identidade Cultural Nordestina;Ariano Suassuna;19;2;NaN;Revista Brasileira de Cultura;2
+Artigo;Cinema Novo: Estética da Fome;Glauber Rocha;20;4;NaN;Revista Civilização Brasileira;3
+Artigo;A Dança Popular em Pernambuco: Frevo e Maracatu;Roberto Pereira;21;3;NaN;Revista Brasileira de Estudos da Dança;4
+Artigo;Os Sertões e a Formação do Brasil Moderno;Euclides da Cunha;22;2;NaN;Revista do Instituto Histórico e Geográfico Brasileiro;5
+Artigo;Inteligência Artificial e Sociedade;Emerson Morais;23;5;NaN;Revista UFAPE;6
+Artigo;Tecnologia e Inclusão Digital no Brasil;Demi Getschko;24;4;NaN;Revista CGI.br;7
+Artigo;Avanços na Medicina Tropical no Brasil;Carlos Chagas;25;3;NaN;Memórias do Instituto Oswaldo Cruz;8
+Artigo;A Importância da Fiocruz para a Saúde Pública;Nísia Trindade Lima;26;2;NaN;Cadernos de Saúde Pública;9
+Artigo;Literatura Brasileira Contemporânea: Novas Vozes;Regina Dalcastagnè;27;4;NaN;Revista Estudos de Literatura Brasileira Contemporânea;10
+Artigo;Ciência no Brasil: Desafios e Perspectivas;José Goldemberg;28;3;NaN;Revista Ciência Hoje;11
+Artigo;O Frevo como Patrimônio Cultural Imaterial;Cláudia Valença;29;2;NaN;Revista do IPHAN;12
+Artigo;Recife: Polo Tecnológico do Nordeste;Silvio Meira;30;5;NaN;Revista Porto Digital;13
+Artigo;A Música Popular Brasileira e suas Transformações;Hermano Vianna;31;3;NaN;Revista Brasileira de Ciências Sociais;14
+Artigo;Educação, Cultura e Sociedade no Nordeste Brasileiro;Paulo Freire;32;4;NaN;Revista Educação & Sociedade;15
+Livro;O Senhor dos Anéis;J.R.R. Tolkien;101;5;1234567890123;NaN;NaN;
+Artigo;IA na Educação;João Silva;202;10;NaN;Revista Tech;15
+Livro;Caminho dos Reis;Brandon Sanderson;123;5;1234567890123;NaN;NaN;
+Livro;Caminho dos Reis;Brandon Sanderson;297;5;1234567890123;NaN;NaN;
+Livro;Palaras de Radiancia;Brandon Sanderson;298;5;1234567890123;NaN;NaN;
+Artigo;IA na Educação;João Silva;252;10;NaN;Revista Tech;15
+Livro;Sacramentadora;Brandon Sanderson;299;5;1234567890123;NaN;NaN;
+Artigo;IA na Educação;João Silva;232;10;NaN;Revista Tech;15

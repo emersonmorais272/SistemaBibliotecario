@@ -33,10 +33,12 @@ public class TesteUsuario {
         }
         Scanner sc = new Scanner(System.in);
         String nome = null;
-        String cpf = null;
+        String cpf = "23458647901";
         String anoN = null;
         String matricula = null;
         String curso = null;
+
+        /*fachada.cadastrarProfessor("Daliton", "23458647901", "1990", "24234790");
 
         nome = lerEntradaValidada("Qual eh o nome?", sc);
         cpf = lerEntradaValidada("Qual eh o CPF", 11, sc);
@@ -44,7 +46,7 @@ public class TesteUsuario {
         matricula = lerEntradaValidada("Qual eh a matricula", 8, sc);
         curso = lerEntradaValidada("Qual eh o curso matriculado?", sc);
 
-        fachada.cadastrarAluno(nome, cpf, anoN, matricula, curso);
+        fachada.cadastrarAluno(nome, cpf, anoN, matricula, curso);*/
         Usuario user = fachada.buscarUsuario(cpf);
 
         if (user != null) {

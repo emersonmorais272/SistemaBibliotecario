@@ -15,8 +15,8 @@ public class TesteAcervo {
             System.out.println("--- Testando Cadastro de Itens ---");
 
             // 2. Criando um Livro e um Artigo
-            Livro l1 = new Livro("O Senhor dos Anéis", "J.R.R. Tolkien", 101, true, 5, "1234567890123");
-            Artigo a1 = new Artigo("IA na Educação", "João Silva", 202, true, 10, "Março", 15, "Revista Tech");
+            Livro l1 = new Livro("Sacramentadora", "Brandon Sanderson", 299, true, 5, "1234567890123");
+            Artigo a1 = new Artigo("IA na Educação", "João Silva", 232, true, 10, "Março", 15, "Revista Tech");
 
             // 3. Cadastrando via fachada
             fachada.cadastrarItem(l1);
