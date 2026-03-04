@@ -67,6 +67,10 @@ public class Fachada {
         this.controladorUsuario.Cadastrar(nome, cpf, nasc, siape);
     }
 
+    public void cadastrarFuncionario(String nome, String cpf, String nasc, int codigo) {
+        this.controladorUsuario.Cadastrar(nome, cpf, nasc, codigo);
+    }
+
     public void atualizarUsuario(String cpf, String nome, String anoNasc, String matricula, String curso){
         this.controladorUsuario.Atualizar(cpf, nome, anoNasc, matricula, curso);
     }

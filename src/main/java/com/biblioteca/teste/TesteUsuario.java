@@ -38,6 +38,7 @@ public class TesteUsuario {
         String matricula = null;
         String curso = null;
 
+        fachada.cadastrarFuncionario("MEC", "45370937612", "1989", 12345678);
         /*fachada.cadastrarProfessor("Daliton", "23458647901", "1990", "24234790");
 
         nome = lerEntradaValidada("Qual eh o nome?", sc);
