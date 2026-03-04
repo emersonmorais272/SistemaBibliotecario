@@ -25,4 +25,14 @@ public class MainApp extends Application {
         stage.setScene(scene);
         stage.show();
     }
+    // Cole isto dentro da classe MainApp, logo abaixo da declaração "private static Stage stage;"
+    private static com.biblioteca.negocio.modelo.Usuario usuarioLogado;
+
+    public static void setUsuarioLogado(com.biblioteca.negocio.modelo.Usuario u) {
+        usuarioLogado = u;
+    }
+
+    public static com.biblioteca.negocio.modelo.Usuario getUsuarioLogado() {
+        return usuarioLogado;
+    }
 }

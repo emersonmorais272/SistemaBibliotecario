@@ -19,6 +19,7 @@ public class LoginController {
         Usuario user = fachada.buscarUsuario(cpf);
 
         if (user != null) {
+            MainApp.setUsuarioLogado(user);
             System.out.println("Login com sucesso: " + user.getNome());
             MainApp.carregarTela("menu.fxml", "Menu Principal - " + user.getNome());
         } else {

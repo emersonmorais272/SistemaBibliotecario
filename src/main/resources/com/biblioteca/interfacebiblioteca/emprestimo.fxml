@@ -10,9 +10,9 @@
       <font>
          <Font size="21.0" />
       </font></Label>
-   <Button mnemonicParsing="false" text="Solicitar Empréstimo" />
-   <Button mnemonicParsing="false" text="Devolver Item" />
-   <Button mnemonicParsing="false" text="Ver Meus Empréstimos" />
+    <Button mnemonicParsing="false" onAction="#abrirSolicitarEmprestimo" text="Solicitar Empréstimo" />
+    <Button mnemonicParsing="false" text="Devolver Item" />
+    <Button mnemonicParsing="false" onAction="#abrirMeusEmprestimos" text="Ver Meus Empréstimos" />
     <Button onAction="#voltar" text="Voltar" />
 
 </VBox>

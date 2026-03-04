@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="15.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biblioteca.interfacebiblioteca.MeusEmprestimosController">
+
+    <Label text="Meus Empréstimos Ativos">
+        <font>
+            <Font name="System Bold" size="18.0" />
+        </font>
+    </Label>
+
+    <TableView fx:id="tabelaEmprestimos" prefHeight="280.0" prefWidth="560.0">
+        <columns>
+            <TableColumn fx:id="colTitulo" prefWidth="250.0" text="Livro / Artigo" />
+            <TableColumn fx:id="colDataEmp" prefWidth="150.0" text="Data do Empréstimo" />
+            <TableColumn fx:id="colDataDev" prefWidth="150.0" text="Devolver Até" />
+        </columns>
+    </TableView>
+
+    <Button mnemonicParsing="false" onAction="#voltar" text="Voltar ao Menu" />
+
+</VBox>
