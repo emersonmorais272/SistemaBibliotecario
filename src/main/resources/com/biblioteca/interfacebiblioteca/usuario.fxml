@@ -1,13 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox spacing="10" alignment="CENTER"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.biblioteca.interfacebiblioteca.UsuarioController">
+<VBox alignment="CENTER" prefHeight="380.0" prefWidth="504.0" spacing="10" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biblioteca.interfacebiblioteca.UsuarioController">
 
-    <Label text="Tela de Usuários"/>
-    <Button text="Voltar" onAction="#voltar"/>
+    <Label text="Tela de Usuários">
+      <font>
+         <Font size="23.0" />
+      </font></Label>
+   <Button mnemonicParsing="false" text="Cadastrar Aluno">
+      <font>
+         <Font size="14.0" />
+      </font>
+   </Button>
+   <Button mnemonicParsing="false" text="Cadastrar Professor">
+      <font>
+         <Font size="14.0" />
+      </font>
+   </Button>
+   <Button mnemonicParsing="false" text="Cadastrar Funcionário" />
+   <Button mnemonicParsing="false" text="Listar Usuários">
+      <font>
+         <Font size="14.0" />
+      </font>
+   </Button>
+   <Button mnemonicParsing="false" text="Remover Usuário">
+      <font>
+         <Font size="14.0" />
+      </font>
+   </Button>
+    <Button onAction="#voltar" text="Voltar">
+      <font>
+         <Font size="14.0" />
+      </font></Button>
 
 </VBox>

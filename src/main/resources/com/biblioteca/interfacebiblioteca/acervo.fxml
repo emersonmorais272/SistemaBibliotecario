@@ -1,13 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox spacing="10" alignment="CENTER"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.biblioteca.interfacebiblioteca.AcervoController">
+<VBox alignment="CENTER" prefHeight="496.0" prefWidth="609.0" spacing="10" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12" fx:controller="com.biblioteca.interfacebiblioteca.AcervoController">
 
-    <Label text="Tela de Acervo"/>
-    <Button text="Voltar" onAction="#voltar"/>
+    <Label text="Tela de Acervo">
+      <font>
+         <Font size="24.0" />
+      </font></Label>
+   <Button mnemonicParsing="false" text="Cadastrar">
+      <font>
+         <Font size="14.0" />
+      </font>
+   </Button>
+   <Button mnemonicParsing="false" text="Cadastrar Livros">
+      <font>
+         <Font size="14.0" />
+      </font>
+   </Button>
+   <Button mnemonicParsing="false" text="Listar ">
+      <font>
+         <Font size="14.0" />
+      </font>
+   </Button>
+   <Button mnemonicParsing="false" text="Remover item">
+      <font>
+         <Font size="14.0" />
+      </font>
+   </Button>
+    <Button onAction="#voltar" text="Voltar">
+      <font>
+         <Font size="14.0" />
+      </font></Button>
 
 </VBox>
