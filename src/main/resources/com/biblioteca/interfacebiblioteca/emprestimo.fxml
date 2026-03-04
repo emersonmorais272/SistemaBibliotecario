@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox spacing="10" alignment="CENTER"
-      xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.biblioteca.interfacebiblioteca.EmprestimoController">
+<VBox alignment="CENTER" prefHeight="347.0" prefWidth="351.0" spacing="10" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biblioteca.interfacebiblioteca.EmprestimoController">
 
-    <Label text="Tela de Empréstimos"/>
-    <Button text="Voltar" onAction="#voltar"/>
+    <Label prefHeight="46.0" prefWidth="195.0" text="Tela de Empréstimos">
+      <font>
+         <Font size="21.0" />
+      </font></Label>
+    <Button mnemonicParsing="false" onAction="#abrirSolicitarEmprestimo" text="Solicitar Empréstimo" />
+    <Button mnemonicParsing="false" text="Devolver Item" />
+    <Button mnemonicParsing="false" onAction="#abrirMeusEmprestimos" text="Ver Meus Empréstimos" />
+    <Button onAction="#voltar" text="Voltar" />
 
 </VBox>

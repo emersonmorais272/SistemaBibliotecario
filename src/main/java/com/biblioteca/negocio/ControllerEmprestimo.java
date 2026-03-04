@@ -58,5 +58,8 @@ public class ControllerEmprestimo {
 
         return emprestimo;
     }
+    public java.util.List<com.biblioteca.negocio.modelo.Emprestimo> listarEmprestimos() {
+        return this.repoEmprestimo.listar();
+    }
 }
 

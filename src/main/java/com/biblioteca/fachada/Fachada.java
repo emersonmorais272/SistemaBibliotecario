@@ -67,6 +67,10 @@ public class Fachada {
         this.controladorUsuario.Cadastrar(nome, cpf, nasc, siape);
     }
 
+    public void cadastrarFuncionario(String nome, String cpf, String anoNasc, int codigoAcesso) {
+        this.controladorUsuario.Cadastrar(nome, cpf, anoNasc, codigoAcesso);
+    }
+
     public void atualizarUsuario(String cpf, String nome, String anoNasc, String matricula, String curso){
         this.controladorUsuario.Atualizar(cpf, nome, anoNasc, matricula, curso);
     }
@@ -97,4 +101,8 @@ public class Fachada {
     public double finalizarDevolucao(String cpfUsuario) {
         return this.controladorEmprestimo.finalizarDevolucao(cpfUsuario);
     }
+    public java.util.List<Emprestimo> listarEmprestimos() {
+        return this.controladorEmprestimo.listarEmprestimos();
+    }
+
 }
