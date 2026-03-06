@@ -1,13 +1,20 @@
 package com.biblioteca.interfacebiblioteca;
 
 import com.biblioteca.fachada.Fachada;
+import com.biblioteca.negocio.modelo.Aluno;
+import com.biblioteca.negocio.modelo.Professor;
 import com.biblioteca.negocio.modelo.Usuario;
 import javafx.fxml.FXML;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+
 public class LoginController {
 
+    public Hyperlink linkCadastrar;
     @FXML private TextField txtUsuario; // vamo usar para o CPF
 
     private Fachada fachada = Fachada.getInstance();
@@ -19,9 +26,16 @@ public class LoginController {
         Usuario user = fachada.buscarUsuario(cpf);
 
         if (user != null) {
-            MainApp.setUsuarioLogado(user);
-            System.out.println("Login com sucesso: " + user.getNome());
-            MainApp.carregarTela("menu.fxml", "Menu Principal - " + user.getNome());
+            if(user instanceof Professor || user instanceof Aluno){
+                MainApp.setUsuarioLogado(user);
+                System.out.println("Login com sucesso: " + user.getNome());
+                MainApp.carregarTela("menuUsuarioComum.fxml", "Menu Principal - " + user.getNome());
+
+            } else {
+                MainApp.setUsuarioLogado(user);
+                System.out.println("Login com sucesso: " + user.getNome());
+                MainApp.carregarTela("menuFuncionario.fxml", "Menu Principal - " + user.getNome());
+            }
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erro de Acesso");
@@ -29,5 +43,10 @@ public class LoginController {
             alert.setContentText("CPF não encontrado no sistema!");
             alert.showAndWait();
         }
+    }
+
+    @FXML
+    public void abrirTelaCadastro(javafx.event.ActionEvent actionEvent) throws Exception {
+        MainApp.abrirPopup("cadastrarLogin.fxml", "cadastro novo usuario");
     }
 }

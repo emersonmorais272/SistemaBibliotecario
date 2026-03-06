@@ -30,6 +30,6 @@ public class AcervoController {
 
     @FXML
     private void voltar() throws Exception {
-        MainApp.carregarTela("menu.fxml", "Menu Principal");
+        MainApp.carregarTela("menuFuncionario.fxml", "Menu Principal");
     }
 }

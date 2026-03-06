@@ -1,9 +1,12 @@
 package com.biblioteca.negocio.modelo;
 
+import com.opencsv.bean.CsvBindByName;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 
 public class Professor extends Usuario implements Serializable {
+    @CsvBindByName(column = "Matricula/SIAPE/CO_Acesso")
     private String siape;
 
     public Professor(String nome, String CPF, String anoNascimento, String siape){

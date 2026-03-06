@@ -3,6 +3,7 @@ module com.biblioteca {
     requires javafx.fxml;
     requires java.desktop;
     requires com.opencsv;
+    requires javafx.base;
 
     // isso aqui abre o pacote de interface para o FX encontrar seus Controllers
     opens com.biblioteca.interfacebiblioteca to javafx.fxml;

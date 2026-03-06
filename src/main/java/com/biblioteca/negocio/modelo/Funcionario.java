@@ -1,8 +1,11 @@
 package com.biblioteca.negocio.modelo;
 
+import com.opencsv.bean.CsvBindByName;
+
 import java.io.Serializable;
 
 public class Funcionario extends Usuario implements Serializable {
+    @CsvBindByName(column = "Matricula/SIAPE/CO_Acesso")
     private int codigoAcesso;
 
     public Funcionario(int codigoAcesso, String nome, String CPF, String anoNascimento){

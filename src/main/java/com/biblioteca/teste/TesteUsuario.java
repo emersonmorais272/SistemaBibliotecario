@@ -24,7 +24,7 @@ public class TesteUsuario {
             System.err.println("ERRO: " + e.getMessage());
         }
         System.out.println(fachada.buscarUsuario("12312312323"));
-        System.out.println(fachada.listarAcervo());
+        //System.out.println(fachada.listarAcervo());
 
         if(fachada.listarUsuario() == null){
             System.out.println("Ainda nao ha usuarios cadastrados");
@@ -33,13 +33,12 @@ public class TesteUsuario {
         }
         Scanner sc = new Scanner(System.in);
         String nome = null;
-        String cpf = "23458647901";
+        String cpf = null;
         String anoN = null;
         String matricula = null;
         String curso = null;
 
-        fachada.cadastrarFuncionario("MEC", "45370937612", "1989", 12345678);
-        /*fachada.cadastrarProfessor("Daliton", "23458647901", "1990", "24234790");
+//        fachada.cadastrarProfessor("Daliton", "23458647901", "1990", "24234790");
 
         nome = lerEntradaValidada("Qual eh o nome?", sc);
         cpf = lerEntradaValidada("Qual eh o CPF", 11, sc);
@@ -47,7 +46,7 @@ public class TesteUsuario {
         matricula = lerEntradaValidada("Qual eh a matricula", 8, sc);
         curso = lerEntradaValidada("Qual eh o curso matriculado?", sc);
 
-        fachada.cadastrarAluno(nome, cpf, anoN, matricula, curso);*/
+        fachada.cadastrarAluno(nome, cpf, anoN, matricula, curso);
         Usuario user = fachada.buscarUsuario(cpf);
 
         if (user != null) {

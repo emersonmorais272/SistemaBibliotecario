@@ -1,12 +1,19 @@
 package com.biblioteca.interfacebiblioteca;
 
+import com.biblioteca.negocio.modelo.Funcionario;
+import com.biblioteca.negocio.modelo.Usuario;
 import javafx.fxml.FXML;
 
 public class EmprestimoController {
 
     @FXML
     private void voltar() throws Exception {
-        MainApp.carregarTela("menu.fxml", "Menu Principal");
+        Usuario logado = MainApp.getUsuarioLogado();
+        if(logado instanceof Funcionario) {
+            MainApp.carregarTela("menuFuncionario.fxml", "Menu Principal");
+        } else {
+            MainApp.carregarTela("menuUsuarioComum.fxml", "Menu Principal");
+        }
     }
     @FXML
     private void abrirMeusEmprestimos() throws Exception {

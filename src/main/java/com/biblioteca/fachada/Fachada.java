@@ -75,6 +75,13 @@ public class Fachada {
         this.controladorUsuario.Atualizar(cpf, nome, anoNasc, matricula, curso);
     }
 
+    public void atualizarUsuario(String cpf, String nome, String anoNasc, String SIAPE){
+        this.controladorUsuario.Atualizar(cpf, nome, anoNasc, SIAPE);
+    }
+
+    public void atualizarUsuario(String cpf, String nome, String anoNasc, int codigoAcesso){
+        this.controladorUsuario.Atualizar(cpf, nome, anoNasc, codigoAcesso);
+    }
     public Usuario buscarUsuario(String cpf){
         return this.controladorUsuario.Buscar(cpf);
     }

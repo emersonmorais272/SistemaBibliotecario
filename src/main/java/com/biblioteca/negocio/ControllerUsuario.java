@@ -100,8 +100,9 @@ public class ControllerUsuario {
         Usuario u = this.repoUsuario.Buscar(CPF);
         if(u != null){
             this.repoUsuario.Remover(u);
+        } else {
+            throw new UsuarioNaoEncontradoException("CPF invalido! Nao foi possivel localizar o CPF");
         }
-        throw new UsuarioNaoEncontradoException("CPF invalido! Nao foi possivel localizar o CPF");
     }
 
     public Usuario Buscar(String CPF){

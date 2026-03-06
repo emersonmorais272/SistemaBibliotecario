@@ -1,15 +1,17 @@
 package com.biblioteca.interfacebiblioteca;
 
 import com.biblioteca.fachada.Fachada;
+import com.biblioteca.negocio.modelo.Aluno;
+import com.biblioteca.negocio.modelo.Funcionario;
+import com.biblioteca.negocio.modelo.Professor;
 import com.biblioteca.negocio.modelo.Usuario;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 
 import java.util.List;
 
@@ -86,6 +88,7 @@ public class UsuarioController {
 
     @FXML
     private void voltar() throws Exception {
-        MainApp.carregarTela("menu.fxml", "Menu Principal");
+        MainApp.carregarTela("menuFuncionario.fxml", "Menu Principal");
     }
+
 }

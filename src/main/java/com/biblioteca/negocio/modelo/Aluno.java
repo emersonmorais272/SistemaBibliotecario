@@ -1,10 +1,14 @@
 package com.biblioteca.negocio.modelo;
 
+import com.opencsv.bean.CsvBindByName;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 
 public class Aluno extends Usuario implements Serializable {
+    @CsvBindByName(column = "Matricula/SIAPE/CO_Acesso")
     private String matricula;
+    @CsvBindByName(column = "Curso")
     private String curso;
 
     public Aluno(String nome, String CPF, String anoNascimento, String matricula, String curso){
@@ -24,6 +28,14 @@ public class Aluno extends Usuario implements Serializable {
 
     public void setMatricula(String matricula) {
         this.matricula = matricula;
+    }
+
+    public String getCurso() {
+        return curso;
+    }
+
+    public void setCurso(String curso) {
+        this.curso = curso;
     }
 
     public LocalDate calcularDevoluçao (){
