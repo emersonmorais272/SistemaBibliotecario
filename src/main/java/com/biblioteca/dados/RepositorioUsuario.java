@@ -1,11 +1,19 @@
 package com.biblioteca.dados;
 
 import com.biblioteca.negocio.modelo.Aluno;
+import com.biblioteca.negocio.modelo.Funcionario;
 import com.biblioteca.negocio.modelo.Professor;
 import com.biblioteca.negocio.modelo.Usuario;
 import com.biblioteca.negocio.exceptions.UsuarioNaoEncontradoException;
+import com.opencsv.CSVReader;
+import com.opencsv.CSVReaderBuilder;
+import com.opencsv.bean.CsvToBean;
+import com.opencsv.bean.CsvToBeanBuilder;
+import com.opencsv.exceptions.CsvValidationException;
 
 import java.io.*;
+import java.lang.classfile.instruction.SwitchCase;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +23,7 @@ public class RepositorioUsuario implements IRepositorioUsuario {
 
     public RepositorioUsuario() {
         this.CarregarArquivo();
+
     }
 
 
@@ -72,12 +81,14 @@ public class RepositorioUsuario implements IRepositorioUsuario {
 
     public void SalvarCSV(List<Usuario> lista) {
         try (PrintWriter writer = new PrintWriter(new FileWriter("DadosUsuario.csv"))) {
-            writer.println("Tipo;Nome;CPF;Idade;Matricula/SIAPE");
+            writer.println("Tipo;Nome;CPF;Idade;Ano_Nascimento;Matricula/SIAPE/CO_Acesso;Curso");
             for (Usuario item : lista) {
                 if(item instanceof Aluno){
-                    writer.println(item.getClass().getSimpleName() + ";" + item.getNome() + ";" + item.getCPF() + ";" + item.getIdade() + ";" + ((Aluno) item).getMatricula() + ";");
+                    writer.println(item.getClass().getSimpleName() + ";" + item.getNome() + ";" + item.getCPF() + ";" + item.getIdade() + ";" + item.getAnoNascimento() + ";" + ((Aluno) item).getMatricula() + ";" + ((Aluno) item).getCurso());
                 } else if(item instanceof Professor){
-                    writer.println(item.getClass().getSimpleName() + ";" + item.getNome() + ";" + item.getCPF() + ";" + item.getIdade() + ";" + ((Professor) item).getSiape() + ";");
+                    writer.println(item.getClass().getSimpleName() + ";" + item.getNome() + ";" + item.getCPF() + ";" + item.getIdade() + ";" + item.getAnoNascimento() + ";" + ((Professor) item).getSiape() + ";" + "NaN");
+                } else if(item instanceof Funcionario){
+                    writer.println(item.getClass().getSimpleName() + ";" + item.getNome() + ";" + item.getCPF() + ";" + item.getIdade() + ";" + item.getAnoNascimento() + ";" + ((Funcionario) item).getCodigoAcesso() + ";" + "NaN");
                 }
             }
         } catch (IOException e) {

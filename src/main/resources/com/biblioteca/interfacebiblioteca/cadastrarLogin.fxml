@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" prefHeight="500.0" prefWidth="600.0" spacing="15.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biblioteca.interfacebiblioteca.CadastrarUsuarioLoginController">
+
+    <Label text="Cadastrar Novo Usuário">
+        <font>
+            <Font name="System Bold" size="18.0" />
+        </font>
+    </Label>
+
+    <GridPane alignment="CENTER" hgap="10" vgap="15">
+        <columnConstraints>
+            <ColumnConstraints halignment="RIGHT" minWidth="120.0" />
+            <ColumnConstraints hgrow="ALWAYS" minWidth="200.0" />
+        </columnConstraints>
+
+        <Label text="Tipo de Usuário:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <ComboBox fx:id="comboTipoUsuario" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+        <Label text="Nome Completo:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <TextField fx:id="txtNome" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+        <Label text="CPF (Apenas números):" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <TextField fx:id="txtCpf" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+        <Label text="Ano de Nascimento:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <TextField fx:id="txtAnoNascimento" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+        <Label fx:id="lblCampo1" text="Matrícula:" GridPane.columnIndex="0" GridPane.rowIndex="4" visible="false"/>
+        <TextField fx:id="txtCampo1" GridPane.columnIndex="1" GridPane.rowIndex="4" visible="false"/>
+
+        <Label fx:id="lblCampo2" text="Curso:" GridPane.columnIndex="0" GridPane.rowIndex="5" visible="false"/>
+        <TextField fx:id="txtCampo2" GridPane.columnIndex="1" GridPane.rowIndex="5" visible="false"/>
+    </GridPane>
+
+    <HBox alignment="CENTER" spacing="20.0">
+        <Button mnemonicParsing="false" onAction="#salvarUsuario" text="Salvar Cadastro" style="-fx-font-weight: bold; -fx-text-fill: green;"/>
+        <Button mnemonicParsing="false" onAction="#voltar" text="Cancelar e Voltar" style="-fx-text-fill: red;"/>
+    </HBox>
+
+</VBox>

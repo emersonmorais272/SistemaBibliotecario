@@ -1,12 +1,19 @@
 package com.biblioteca.negocio.modelo;
 
+import com.opencsv.bean.CsvBindAndJoinByName;
+import com.opencsv.bean.CsvBindByName;
+
 import java.io.Serializable;
 import java.util.Objects;
 
 public abstract class Usuario implements Serializable {
+    @CsvBindByName(column = "Nome")
     private String Nome;
+    @CsvBindByName(column = "CPF")
     private String CPF;
+    @CsvBindByName(column = "Idade")
     private int idade;
+    @CsvBindByName(column = "Ano_Nascimento")
     private String anoNascimento;
 
     public Usuario(String nome, String CPF, String anoNascimento) {

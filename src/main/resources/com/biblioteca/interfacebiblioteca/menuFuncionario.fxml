@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="199.0" prefWidth="326.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biblioteca.interfacebiblioteca.MenuController">
+
+    <MenuButton layoutX="14.0" layoutY="15.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="136.0" text="Minha conta">
+        <items>
+            <MenuItem mnemonicParsing="false" onAction="#abrirAtualizar" text="Atualizar conta" />
+            <MenuItem mnemonicParsing="false" onAction="#removerConta" text="Apagar conta" />
+            <MenuItem mnemonicParsing="false" onAction="#sair" text="Sair" />
+        </items>
+    </MenuButton>
+    <Button layoutX="14.0" layoutY="78.0" onAction="#abrirAcervo" prefHeight="96.0" prefWidth="136.0" text="Gerenciar Acervo">
+        <cursor>
+            <Cursor fx:constant="HAND" />
+        </cursor></Button>
+   <Button layoutX="169.0" layoutY="15.0" onAction="#abrirUsuarios" mnemonicParsing="false" prefHeight="160.0" prefWidth="136.0" text="Gerenciar Usuarios" />
+
+</AnchorPane>
