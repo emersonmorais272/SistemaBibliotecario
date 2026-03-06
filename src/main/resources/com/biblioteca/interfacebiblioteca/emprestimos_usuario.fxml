@@ -4,9 +4,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="450.0" prefWidth="650.0" spacing="15.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biblioteca.interfacebiblioteca.MeusEmprestimosController">
+<VBox alignment="CENTER" prefHeight="450.0" prefWidth="650.0" spacing="15.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biblioteca.interfacebiblioteca.EmprestimosUsuarioController">
 
-    <Label text="Meus Empréstimos Ativos">
+    <Label fx:id="lblTitulo" text="Empréstimos do Usuário">
         <font>
             <Font name="System Bold" size="18.0" />
         </font>
@@ -21,6 +21,9 @@
         </columns>
     </TableView>
 
-    <Button mnemonicParsing="false" onAction="#voltar" text="Voltar" />
+    <HBox alignment="CENTER" spacing="20.0">
+        <Button mnemonicParsing="false" onAction="#perdoarMulta" text="Perdoar Multa do Item" style="-fx-font-weight: bold; -fx-text-fill: green;"/>
+        <Button mnemonicParsing="false" onAction="#voltar" text="Voltar para Usuários" />
+    </HBox>
 
 </VBox>

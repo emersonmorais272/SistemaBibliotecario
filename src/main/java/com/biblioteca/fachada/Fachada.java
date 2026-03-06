@@ -112,4 +112,8 @@ public class Fachada {
         return this.controladorEmprestimo.listarEmprestimos();
     }
 
+    public void perdoarMultaEmprestimo(Emprestimo emprestimo) {
+        this.controladorEmprestimo.perdoarMulta(emprestimo);
+    }
+
 }

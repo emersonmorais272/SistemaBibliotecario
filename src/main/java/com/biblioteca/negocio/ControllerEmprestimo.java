@@ -32,7 +32,7 @@ public class ControllerEmprestimo {
         double multaTotal = 0;
 
         // Comparação correta de atraso
-        if (hoje.isAfter(prevista)) {
+        if (hoje.isAfter(prevista) && !emprestimo.isMultaPerdoada()) {
             long diasAtraso = java.time.temporal.ChronoUnit.DAYS.between(prevista, hoje);
             multaTotal = emprestimo.getUsuario().calcularMulta(diasAtraso);
         }
@@ -60,6 +60,13 @@ public class ControllerEmprestimo {
     }
     public java.util.List<com.biblioteca.negocio.modelo.Emprestimo> listarEmprestimos() {
         return this.repoEmprestimo.listar();
+    }
+
+    public void perdoarMulta(Emprestimo emprestimo) {
+        if (emprestimo != null) {
+            emprestimo.setMultaPerdoada(true);
+            this.repoEmprestimo.SalvarArquivo(this.repoEmprestimo.listar());
+        }
     }
 }
 

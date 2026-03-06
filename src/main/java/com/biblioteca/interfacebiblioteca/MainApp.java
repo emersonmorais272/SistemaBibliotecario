@@ -64,4 +64,15 @@ public class MainApp extends Application {
     public static com.biblioteca.negocio.modelo.Usuario getUsuarioLogado() {
         return usuarioLogado;
     }
+
+
+    private static com.biblioteca.negocio.modelo.Usuario usuarioInspecionado;
+
+    public static void setUsuarioInspecionado(com.biblioteca.negocio.modelo.Usuario u) {
+        usuarioInspecionado = u;
+    }
+
+    public static com.biblioteca.negocio.modelo.Usuario getUsuarioInspecionado() {
+        return usuarioInspecionado;
+    }
 }
