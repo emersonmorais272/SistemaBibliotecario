@@ -7,13 +7,12 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 import java.util.List;
 
-public class AcervoController {
+public class AcervoComumController {
 
     @FXML private TableView<Acervo> tabelaAcervo;
     @FXML private TableColumn<Acervo, String> colTipo;
@@ -56,38 +55,7 @@ public class AcervoController {
     }
 
     @FXML
-    private void removerItemSelecionado() {
-        Acervo selecionado = tabelaAcervo.getSelectionModel().getSelectedItem();
-
-        if (selecionado == null) {
-            mostrarAlerta(Alert.AlertType.WARNING, "Atenção", "Selecione um item na tabela para remover.");
-            return;
-        }
-
-        try {
-            fachada.removerItem(selecionado.getCodigo());
-            mostrarAlerta(Alert.AlertType.INFORMATION, "Sucesso", "Item removido do acervo.");
-            carregarAcervo(); // Atualiza a tabela na tela imediatamente
-        } catch (Exception e) {
-            mostrarAlerta(Alert.AlertType.ERROR, "Erro", e.getMessage());
-        }
-    }
-
-    @FXML
-    private void abrirCadastro() throws Exception {
-        MainApp.carregarTela("cadastrar_acervo.fxml", "Cadastrar Novo Item");
-    }
-
-    private void mostrarAlerta(Alert.AlertType tipo, String titulo, String mensagem) {
-        Alert alert = new Alert(tipo);
-        alert.setTitle(titulo);
-        alert.setHeaderText(null);
-        alert.setContentText(mensagem);
-        alert.showAndWait();
-    }
-
-    @FXML
     private void voltar() throws Exception {
-        MainApp.carregarTela("menuFuncionario.fxml", "Menu Principal");
+        MainApp.carregarTela("menuUsuarioComum.fxml", "Menu Principal");
     }
 }

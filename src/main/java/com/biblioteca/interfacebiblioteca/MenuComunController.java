@@ -2,8 +2,6 @@ package com.biblioteca.interfacebiblioteca;
 
 import com.biblioteca.fachada.Fachada;
 import com.biblioteca.negocio.modelo.Aluno;
-import com.biblioteca.negocio.modelo.Funcionario;
-import com.biblioteca.negocio.modelo.Professor;
 import com.biblioteca.negocio.modelo.Usuario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,14 +29,20 @@ public class MenuComunController {
         return resultado.isPresent() && resultado.get() == botaoSim;
     }
 
-    public void abrirAcervo(ActionEvent actionEvent) {
+    @FXML
+    public void abrirAcervo(ActionEvent actionEvent) throws Exception {
+        // Abre uma tela exclusiva de consulta para alunos e professores
+        MainApp.carregarTela("acervo_comum.fxml", "Consultar Acervo");
     }
 
+    @FXML
     public void abrirEmprestimos(ActionEvent actionEvent) throws Exception {
-        MainApp.carregarTela("emprestimo.fxml", "Login");
+        MainApp.carregarTela("emprestimo.fxml", "Gerenciar Empréstimos");
     }
 
+    @FXML
     public void sair(ActionEvent actionEvent) throws Exception {
+        MainApp.setUsuarioLogado(null);
         MainApp.carregarTela("login.fxml", "Login");
     }
 
@@ -50,14 +54,15 @@ public class MenuComunController {
             MainApp.carregarTela("login.fxml", "Tela de Login");
         }
     }
+
+    @FXML
     public void abrirAtualizar(ActionEvent actionEvent) throws Exception {
         Usuario logado = MainApp.getUsuarioLogado();
 
         if(logado instanceof Aluno) {
-            MainApp.carregarTela("atualizarCadastroAluno.fxml", "Tela de Atualizacao");
+            MainApp.carregarTela("atualizarCadastroAluno.fxml", "Atualizar Dados");
         } else {
-            MainApp.carregarTela("atualizarCadastroProfessorFuncionario.fxml", "tela de atualizacao");
+            MainApp.carregarTela("atualizarCadastroProfessorFuncionario.fxml", "Atualizar Dados");
         }
-
     }
 }
