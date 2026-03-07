@@ -27,10 +27,10 @@ public class CadastrarUsuarioLoginController {
 
     @FXML
     public void initialize() {
-        // Preenche as opções da caixa de seleção
+
         comboTipoUsuario.setItems(FXCollections.observableArrayList("Aluno", "Professor"));
 
-        // Fica "escutando" as mudanças na caixa de seleção para trocar os campos na tela
+
         comboTipoUsuario.getSelectionModel().selectedItemProperty().addListener((observable, valorAntigo, valorNovo) -> {
             atualizarCamposDinamicos(valorNovo);
         });
@@ -39,7 +39,7 @@ public class CadastrarUsuarioLoginController {
     private void atualizarCamposDinamicos(String tipo) {
         if (tipo == null) return;
 
-        // Limpa os campos sempre que trocar o tipo
+
         txtCampo1.clear();
         txtCampo2.clear();
 
@@ -108,7 +108,6 @@ public class CadastrarUsuarioLoginController {
 
     @FXML
     private void voltar() {
-        // Como é um popup, "voltar" significa apenas fechar esta janela!
         javafx.stage.Stage stage = (javafx.stage.Stage) txtNome.getScene().getWindow();
         stage.close();
     }

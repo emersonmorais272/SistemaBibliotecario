@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" prefHeight="250.0" prefWidth="350.0" spacing="20.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biblioteca.interfacebiblioteca.AcessoFuncionarioController">
+
+    <Label text="Acesso Restrito" textFill="RED">
+        <font>
+            <Font name="System Bold" size="18.0" />
+        </font>
+    </Label>
+
+    <Label text="Digite o código da administração:" />
+
+    <PasswordField fx:id="txtCodigoSecreto" maxWidth="150.0" alignment="CENTER"/>
+
+    <HBox alignment="CENTER" spacing="15.0">
+        <Button mnemonicParsing="false" onAction="#verificarCodigo" text="Confirmar" style="-fx-background-color: green; -fx-text-fill: white; -fx-font-weight: bold;"/>
+        <Button mnemonicParsing="false" onAction="#voltar" text="Voltar para Login" />
+    </HBox>
+
+</VBox>

@@ -49,4 +49,10 @@ public class LoginController {
     public void abrirTelaCadastro(javafx.event.ActionEvent actionEvent) throws Exception {
         MainApp.abrirPopup("cadastrarLogin.fxml", "cadastro novo usuario");
     }
+    @FXML
+    public void abrirTelaAcessoFuncionario(javafx.event.ActionEvent actionEvent) {
+        // Abre a tela do código secreto como um Popup
+        MainApp.abrirPopup("acesso_funcionario.fxml", "Acesso Restrito - Funcionário");
+    }
+
 }
