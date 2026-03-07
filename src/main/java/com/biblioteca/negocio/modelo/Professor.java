@@ -34,8 +34,7 @@ public class Professor extends Usuario implements Serializable {
     public String toString() {
         return  "\n-----------------------------\n" +
                 "USUARIO: Professor: " + super.toString() +
-                "SIAPE='" + this.siape +
-                "-----------------------------";
+                "SIAPE='" + this.siape;
     }
 
     public LocalDate calcularDevoluçao (){

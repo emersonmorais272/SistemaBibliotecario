@@ -64,7 +64,7 @@ public class AtualizarCadastroController {
 
             if (logado != null) {
                 String nome = txtNome.getText().isEmpty() ? logado.getNome() : txtNome.getText();
-                String ano =txtAno.getText().isEmpty() ? logado.getAnoNascimento() : txtAno.getText();
+                String ano = txtAno.getText().isEmpty() ? logado.getAnoNascimento() : txtAno.getText();
                 String cpf = logado.getCPF();
 
                 switch (logado) {
