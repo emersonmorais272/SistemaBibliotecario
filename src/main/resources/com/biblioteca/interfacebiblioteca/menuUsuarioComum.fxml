@@ -1,24 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="169.0" prefWidth="323.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biblioteca.interfacebiblioteca.MenuComunController">
-   <MenuButton layoutX="14.0" layoutY="15.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="136.0" text="Minha conta">
-     <items>
-       <MenuItem mnemonicParsing="false" onAction="#abrirAtualizar" text="Atualizar conta" />
-       <MenuItem mnemonicParsing="false" onAction="#removerConta" text="Apagar conta" />
-       <MenuItem mnemonicParsing="false" onAction="#sair" text="Sair" />
-     </items>
-   </MenuButton>
-    <Button layoutX="14.0" layoutY="78.0" onAction="#abrirAcervo" prefHeight="76.0" prefWidth="136.0" text="Acervo">
-      <cursor>
-         <Cursor fx:constant="HAND" />
-      </cursor></Button>
-    <Button layoutX="173.0" layoutY="15.0" onAction="#abrirEmprestimos" prefHeight="139.0" prefWidth="136.0" text="Meus Emprestimos">
-      <cursor>
-         <Cursor fx:constant="HAND" />
-      </cursor></Button>
+<AnchorPane prefHeight="300.0" prefWidth="500.0" style="-fx-background-color: #F3E5F5;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biblioteca.interfacebiblioteca.MenuComunController">
+    <children>
+        <VBox spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+            <children>
 
+                <HBox alignment="CENTER_LEFT" spacing="15.0">
+                    <children>
+                        <MenuButton mnemonicParsing="false" prefHeight="35.0" prefWidth="140.0" style="-fx-background-color: #6A1B9A; -fx-background-radius: 10; -fx-text-fill: white; -fx-font-weight: bold;" text="Minha Conta" textFill="WHITE">
+                            <items>
+                                <MenuItem mnemonicParsing="false" onAction="#abrirAtualizar" text="Atualizar conta" />
+                                <MenuItem mnemonicParsing="false" onAction="#removerConta" text="Apagar conta" />
+                                <MenuItem mnemonicParsing="false" onAction="#sair" text="Sair" />
+                            </items>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </MenuButton>
+                        <Label text="Área do Aluno/Professor" style="-fx-text-fill: #2E1047; -fx-font-weight: bold;">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </HBox>
+
+                <HBox spacing="20.0" VBox.vgrow="ALWAYS">
+                    <children>
+                        <Button mnemonicParsing="false" onAction="#abrirAcervo" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #4CAF50; -fx-background-radius: 20; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 16;" text="ACERVO" HBox.hgrow="ALWAYS">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </Button>
+
+                        <Button mnemonicParsing="false" onAction="#abrirEmprestimos" prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #6A1B9A; -fx-background-radius: 20; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 16;" text="MEUS EMPRÉSTIMOS" textAlignment="CENTER" wrapText="true" HBox.hgrow="ALWAYS">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </Button>
+                    </children>
+                </HBox>
+
+            </children>
+        </VBox>
+    </children>
 </AnchorPane>

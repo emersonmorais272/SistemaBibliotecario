@@ -4,21 +4,42 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="250.0" prefWidth="350.0" spacing="20.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biblioteca.interfacebiblioteca.AcessoFuncionarioController">
+<VBox alignment="CENTER"
+      prefHeight="250.0"
+      prefWidth="350.0"
+      spacing="20.0"
+      style="-fx-background-color:#f6f7f4; -fx-padding:25;"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.biblioteca.interfacebiblioteca.AcessoFuncionarioController">
 
-    <Label text="Acesso Restrito" textFill="RED">
+    <Label text="Acesso Restrito"
+           style="-fx-text-fill:#372650;">
         <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Bold" size="20.0" />
         </font>
     </Label>
 
-    <Label text="Digite o código da administração:" />
+    <Label text="Digite o código da administração:"
+           style="-fx-text-fill:#3e4637;" />
 
-    <PasswordField fx:id="txtCodigoSecreto" maxWidth="150.0" alignment="CENTER"/>
+    <PasswordField fx:id="txtCodigoSecreto"
+                   maxWidth="180.0"
+                   alignment="CENTER"
+                   style="-fx-background-radius:10; -fx-border-radius:10; -fx-border-color:#366511; -fx-padding:8; -fx-background-color:white;" />
 
     <HBox alignment="CENTER" spacing="15.0">
-        <Button mnemonicParsing="false" onAction="#verificarCodigo" text="Confirmar" style="-fx-background-color: green; -fx-text-fill: white; -fx-font-weight: bold;"/>
-        <Button mnemonicParsing="false" onAction="#voltar" text="Voltar para Login" />
+
+        <Button mnemonicParsing="false"
+                onAction="#verificarCodigo"
+                text="Confirmar"
+                style="-fx-background-color:#366511; -fx-text-fill:white; -fx-font-weight:bold; -fx-background-radius:15; -fx-padding:8 20;" />
+
+        <Button mnemonicParsing="false"
+                onAction="#voltar"
+                text="Voltar para Login"
+                style="-fx-background-color:#372650; -fx-text-fill:white; -fx-background-radius:15; -fx-padding:8 20;" />
+
     </HBox>
 
 </VBox>

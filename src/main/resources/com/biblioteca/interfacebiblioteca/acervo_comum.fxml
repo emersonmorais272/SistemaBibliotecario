@@ -4,16 +4,32 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="450.0" prefWidth="650.0" spacing="15.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biblioteca.interfacebiblioteca.AcervoComumController">
+<VBox alignment="CENTER"
+      prefHeight="450.0"
+      prefWidth="650.0"
+      spacing="18"
+      style="-fx-background-color:#f6f7f4; -fx-padding:25;"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.biblioteca.interfacebiblioteca.AcervoComumController">
 
-    <Label text="Consultar Acervo da Biblioteca">
+    <Label text="Consultar Acervo da Biblioteca"
+           style="-fx-text-fill:#366511;">
         <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Bold" size="20.0"/>
         </font>
     </Label>
-    <TextField fx:id="campoBusca" promptText="Pesquisar por título ou autor..." prefWidth="400"/>
 
-    <TableView fx:id="tabelaAcervo" prefHeight="300.0" prefWidth="600.0">
+    <TextField fx:id="campoBusca"
+               promptText="Pesquisar por título ou autor..."
+               prefWidth="420"
+               style="-fx-background-radius:10; -fx-border-radius:10; -fx-border-color:#366511; -fx-padding:8; -fx-background-color:white;" />
+
+    <TableView fx:id="tabelaAcervo"
+               prefHeight="300.0"
+               prefWidth="600.0"
+               style="-fx-border-color:#366511; -fx-border-radius:10; -fx-background-radius:10;">
+
         <columns>
             <TableColumn fx:id="colTipo" prefWidth="90.0" text="Tipo" />
             <TableColumn fx:id="colTitulo" prefWidth="220.0" text="Título" />
@@ -21,8 +37,12 @@
             <TableColumn fx:id="colCodigo" prefWidth="70.0" text="Código" />
             <TableColumn fx:id="colQtd" prefWidth="60.0" text="Qtd." />
         </columns>
+
     </TableView>
 
-    <Button mnemonicParsing="false" onAction="#voltar" text="Voltar ao Menu" />
+    <Button text="Voltar ao Menu"
+            mnemonicParsing="false"
+            onAction="#voltar"
+            style="-fx-background-color:#372650; -fx-text-fill:white; -fx-background-radius:15; -fx-padding:8 25;" />
 
 </VBox>

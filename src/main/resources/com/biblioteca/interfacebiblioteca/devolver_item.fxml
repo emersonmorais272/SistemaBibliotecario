@@ -4,24 +4,62 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" spacing="15.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biblioteca.interfacebiblioteca.DevolverItemController">
+<VBox alignment="CENTER"
+      prefHeight="400.0"
+      prefWidth="600.0"
+      spacing="18"
+      style="-fx-background-color:#f6f7f4; -fx-padding:25;"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.biblioteca.interfacebiblioteca.DevolverItemController">
 
-    <Label text="Devolver Empréstimo">
+    <Label text="Devolver Empréstimo"
+           style="-fx-text-fill:#366511;">
         <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Bold" size="20.0"/>
         </font>
     </Label>
 
-    <TableView fx:id="tabelaEmprestimos" prefHeight="250.0" prefWidth="560.0">
+    <TableView fx:id="tabelaEmprestimos"
+               prefHeight="250.0"
+               prefWidth="560.0"
+               style="-fx-background-radius:10; -fx-border-radius:10; -fx-border-color:#366511;">
+
         <columns>
-            <TableColumn fx:id="colTitulo" prefWidth="300.0" text="Livro / Artigo" />
-            <TableColumn fx:id="colDataDev" prefWidth="200.0" text="Data Prevista de Devolução" />
+            <TableColumn fx:id="colTitulo"
+                         prefWidth="320.0"
+                         text="Livro / Artigo" />
+
+            <TableColumn fx:id="colDataDev"
+                         prefWidth="220.0"
+                         text="Data Prevista de Devolução" />
         </columns>
+
     </TableView>
 
-    <HBox alignment="CENTER" spacing="20.0">
-        <Button mnemonicParsing="false" onAction="#confirmarDevolucao" text="Confirmar Devolução" style="-fx-font-weight: bold; -fx-text-fill: #b22222;"/>
-        <Button mnemonicParsing="false" onAction="#voltar" text="Voltar ao Menu" />
+    <HBox alignment="CENTER" spacing="20">
+
+        <Button mnemonicParsing="false"
+                onAction="#confirmarDevolucao"
+                text="Confirmar Devolução"
+                prefWidth="180"
+                prefHeight="36"
+                style="-fx-background-color:#366511;
+                       -fx-text-fill:white;
+                       -fx-font-weight:bold;
+                       -fx-background-radius:15;
+                       -fx-padding:8 20;" />
+
+        <Button mnemonicParsing="false"
+                onAction="#voltar"
+                text="Voltar ao Menu"
+                prefWidth="150"
+                prefHeight="36"
+                style="-fx-background-color:#372650;
+                       -fx-text-fill:white;
+                       -fx-background-radius:15;
+                       -fx-padding:8 20;" />
+
     </HBox>
 
 </VBox>

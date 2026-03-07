@@ -1,27 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" prefHeight="206.0" prefWidth="215.0" spacing="10" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biblioteca.interfacebiblioteca.LoginController">
+<VBox alignment="CENTER"
+      prefHeight="350.0"
+      prefWidth="400.0"
+      spacing="18"
+      style="-fx-background-color:#f6f7f4; -fx-border-color:#366511; -fx-border-width:2; -fx-background-radius:15; -fx-border-radius:15;"
+      xmlns="http://javafx.com/javafx/17.0.12"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.biblioteca.interfacebiblioteca.LoginController">
 
-    <Label text="Login do Sistema" />
+    <padding>
+        <Insets bottom="25" left="25" right="25" top="25"/>
+    </padding>
 
-    <TextField fx:id="txtUsuario" prefHeight="19.0" prefWidth="172.0" promptText="CPF">
-      <cursor>
-         <Cursor fx:constant="TEXT" />
-      </cursor></TextField>
-    <PasswordField fx:id="txtSenha" promptText="Senha">
-      <cursor>
-         <Cursor fx:constant="TEXT" />
-      </cursor></PasswordField>
-   <Hyperlink fx:id="linkCadastrar" onAction="#abrirTelaCadastro" text="Cadastro Aluno/Professor" textAlignment="CENTER" textFill="RED" />
-    <Hyperlink onAction="#abrirTelaAcessoFuncionario" text="Cadastro Funcionário(Acesso restrito)" textAlignment="CENTER" textFill="BLUE" />
+    <Label text="LOGIN DO SISTEMA"
+           style="-fx-font-size:22px; -fx-font-weight:bold; -fx-text-fill:#366511;" />
 
-    <Button onAction="#entrar" text="Entrar">
-      <cursor>
-         <Cursor fx:constant="HAND" />
-      </cursor></Button>
+    <VBox maxWidth="260" spacing="8">
+
+        <TextField fx:id="txtUsuario"
+                   promptText="CPF"
+                   style="-fx-background-radius:10; -fx-border-radius:10; -fx-border-color:#366511; -fx-padding:8; -fx-background-color:white;">
+            <cursor>
+                <Cursor fx:constant="TEXT"/>
+            </cursor>
+        </TextField>
+
+        <PasswordField fx:id="txtSenha"
+                       promptText="Senha"
+                       style="-fx-background-radius:10; -fx-border-radius:10; -fx-border-color:#366511; -fx-padding:8; -fx-background-color:white;">
+            <cursor>
+                <Cursor fx:constant="TEXT"/>
+            </cursor>
+        </PasswordField>
+
+    </VBox>
+
+    <VBox alignment="CENTER" spacing="6">
+
+        <Hyperlink fx:id="linkCadastrar"
+                   onAction="#abrirTelaCadastro"
+                   text="Cadastro Aluno/Professor"
+                   textFill="#366511" />
+
+        <Hyperlink onAction="#abrirTelaAcessoFuncionario"
+                   text="Cadastro Funcionário (Acesso Restrito)"
+                   textFill="#372650" />
+
+    </VBox>
+
+    <Button text="ENTRAR"
+            onAction="#entrar"
+            style="-fx-background-color:#366511; -fx-text-fill:white; -fx-font-weight:bold; -fx-background-radius:20; -fx-padding:10 45;">
+
+        <cursor>
+            <Cursor fx:constant="HAND"/>
+        </cursor>
+
+    </Button>
 
 </VBox>

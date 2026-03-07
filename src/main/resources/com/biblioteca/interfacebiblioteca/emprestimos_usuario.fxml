@@ -4,26 +4,73 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="450.0" prefWidth="650.0" spacing="15.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biblioteca.interfacebiblioteca.EmprestimosUsuarioController">
+<VBox alignment="CENTER"
+      prefHeight="450.0"
+      prefWidth="650.0"
+      spacing="18"
+      style="-fx-background-color:#f6f7f4; -fx-padding:25;"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.biblioteca.interfacebiblioteca.EmprestimosUsuarioController">
 
-    <Label fx:id="lblTitulo" text="Empréstimos do Usuário">
+    <Label fx:id="lblTitulo"
+           text="Empréstimos do Usuário"
+           style="-fx-text-fill:#366511;">
         <font>
-            <Font name="System Bold" size="18.0" />
+            <Font name="System Bold" size="20.0"/>
         </font>
     </Label>
 
-    <TableView fx:id="tabelaEmprestimos" prefHeight="300.0" prefWidth="600.0">
+    <TableView fx:id="tabelaEmprestimos"
+               prefHeight="300.0"
+               prefWidth="600.0"
+               style="-fx-background-radius:10; -fx-border-radius:10; -fx-border-color:#366511;">
+
         <columns>
-            <TableColumn fx:id="colTitulo" prefWidth="200.0" text="Livro / Artigo" />
-            <TableColumn fx:id="colDataEmp" prefWidth="130.0" text="Data do Empréstimo" />
-            <TableColumn fx:id="colDataDev" prefWidth="130.0" text="Data de Devolução" />
-            <TableColumn fx:id="colMulta" prefWidth="120.0" text="Multa Atual" />
+
+            <TableColumn fx:id="colTitulo"
+                         prefWidth="210.0"
+                         text="Livro / Artigo" />
+
+            <TableColumn fx:id="colDataEmp"
+                         prefWidth="140.0"
+                         text="Data do Empréstimo" />
+
+            <TableColumn fx:id="colDataDev"
+                         prefWidth="140.0"
+                         text="Data de Devolução" />
+
+            <TableColumn fx:id="colMulta"
+                         prefWidth="120.0"
+                         text="Multa Atual" />
+
         </columns>
+
     </TableView>
 
-    <HBox alignment="CENTER" spacing="20.0">
-        <Button mnemonicParsing="false" onAction="#perdoarMulta" text="Perdoar Multa do Item" style="-fx-font-weight: bold; -fx-text-fill: green;"/>
-        <Button mnemonicParsing="false" onAction="#voltar" text="Voltar para Usuários" />
+    <HBox alignment="CENTER" spacing="20">
+
+        <Button mnemonicParsing="false"
+                onAction="#perdoarMulta"
+                text="Perdoar Multa do Item"
+                prefWidth="200"
+                prefHeight="36"
+                style="-fx-background-color:#366511;
+                       -fx-text-fill:white;
+                       -fx-font-weight:bold;
+                       -fx-background-radius:15;
+                       -fx-padding:8 20;" />
+
+        <Button mnemonicParsing="false"
+                onAction="#voltar"
+                text="Voltar para Usuários"
+                prefWidth="180"
+                prefHeight="36"
+                style="-fx-background-color:#372650;
+                       -fx-text-fill:white;
+                       -fx-background-radius:15;
+                       -fx-padding:8 20;" />
+
     </HBox>
 
 </VBox>
