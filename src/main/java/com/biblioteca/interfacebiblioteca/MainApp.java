@@ -54,7 +54,7 @@ public class MainApp extends Application {
             e.printStackTrace();
         }
     }
-    // Cole isto dentro da classe MainApp, logo abaixo da declaração "private static Stage stage;"
+
     private static com.biblioteca.negocio.modelo.Usuario usuarioLogado;
 
     public static void setUsuarioLogado(com.biblioteca.negocio.modelo.Usuario u) {
