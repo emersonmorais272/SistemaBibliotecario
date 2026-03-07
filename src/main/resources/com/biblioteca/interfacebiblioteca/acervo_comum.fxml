@@ -11,6 +11,7 @@
             <Font name="System Bold" size="18.0" />
         </font>
     </Label>
+    <TextField fx:id="campoBusca" promptText="Pesquisar por título ou autor..." prefWidth="400"/>
 
     <TableView fx:id="tabelaAcervo" prefHeight="300.0" prefWidth="600.0">
         <columns>

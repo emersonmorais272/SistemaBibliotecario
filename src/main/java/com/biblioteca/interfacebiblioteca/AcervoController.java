@@ -6,10 +6,13 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 
 import java.util.List;
 
@@ -22,12 +25,17 @@ public class AcervoController {
     @FXML private TableColumn<Acervo, Number> colCodigo;
     @FXML private TableColumn<Acervo, Number> colQtd;
 
+    @FXML private TextField campoBusca;
+
+    private ObservableList<Acervo> dados;
+
     private Fachada fachada = Fachada.getInstance();
 
     @FXML
     public void initialize() {
         configurarColunas();
         carregarAcervo();
+        configurarBusca();
     }
 
     private void configurarColunas() {
@@ -49,27 +57,69 @@ public class AcervoController {
 
     private void carregarAcervo() {
         List<Acervo> itens = fachada.listarAcervo();
+
         if (itens != null) {
-            ObservableList<Acervo> dados = FXCollections.observableArrayList(itens);
-            tabelaAcervo.setItems(dados);
+            dados = FXCollections.observableArrayList(itens);
         }
+    }
+
+    private void configurarBusca() {
+
+        FilteredList<Acervo> filtro = new FilteredList<>(dados, p -> true);
+
+        campoBusca.textProperty().addListener((observable, oldValue, newValue) -> {
+
+            filtro.setPredicate(acervo -> {
+
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                String busca = newValue.toLowerCase();
+
+                if (acervo.getTitulo().toLowerCase().contains(busca)) {
+                    return true;
+                }
+
+                if (acervo.getAutor().toLowerCase().contains(busca)) {
+                    return true;
+                }
+
+                return false;
+            });
+
+        });
+
+        SortedList<Acervo> sortedData = new SortedList<>(filtro);
+        sortedData.comparatorProperty().bind(tabelaAcervo.comparatorProperty());
+
+        tabelaAcervo.setItems(sortedData);
     }
 
     @FXML
     private void removerItemSelecionado() {
+
         Acervo selecionado = tabelaAcervo.getSelectionModel().getSelectedItem();
 
         if (selecionado == null) {
-            mostrarAlerta(Alert.AlertType.WARNING, "Atenção", "Selecione um item na tabela para remover.");
+            mostrarAlerta(Alert.AlertType.WARNING,
+                    "Atenção",
+                    "Selecione um item na tabela para remover.");
             return;
         }
 
         try {
             fachada.removerItem(selecionado.getCodigo());
-            mostrarAlerta(Alert.AlertType.INFORMATION, "Sucesso", "Item removido do acervo.");
-            carregarAcervo(); // Atualiza a tabela na tela imediatamente
+            mostrarAlerta(Alert.AlertType.INFORMATION,
+                    "Sucesso",
+                    "Item removido do acervo.");
+
+            carregarAcervo();
+
         } catch (Exception e) {
-            mostrarAlerta(Alert.AlertType.ERROR, "Erro", e.getMessage());
+            mostrarAlerta(Alert.AlertType.ERROR,
+                    "Erro",
+                    e.getMessage());
         }
     }
 
