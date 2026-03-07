@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" prefHeight="550.0" prefWidth="600.0" spacing="15.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biblioteca.interfacebiblioteca.CadastrarAcervoController">
+
+    <Label text="Cadastrar Novo Item no Acervo">
+        <font>
+            <Font name="System Bold" size="18.0" />
+        </font>
+    </Label>
+
+    <GridPane alignment="CENTER" hgap="10" vgap="15">
+        <columnConstraints>
+            <ColumnConstraints halignment="RIGHT" minWidth="120.0" />
+            <ColumnConstraints hgrow="ALWAYS" minWidth="200.0" />
+        </columnConstraints>
+
+        <Label text="Tipo de Item:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <ComboBox fx:id="comboTipo" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+        <Label text="Título:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <TextField fx:id="txtTitulo" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+        <Label text="Autor:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <TextField fx:id="txtAutor" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+        <Label text="Código numérico:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <TextField fx:id="txtCodigo" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+        <Label text="Quantidade:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+        <TextField fx:id="txtQtd" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+        <Label fx:id="lblIsbn" text="ISBN (13 num):" GridPane.columnIndex="0" GridPane.rowIndex="5" visible="false"/>
+        <TextField fx:id="txtIsbn" GridPane.columnIndex="1" GridPane.rowIndex="5" visible="false"/>
+
+        <Label fx:id="lblMes" text="Mês Publicação:" GridPane.columnIndex="0" GridPane.rowIndex="5" visible="false"/>
+        <TextField fx:id="txtMes" GridPane.columnIndex="1" GridPane.rowIndex="5" visible="false"/>
+
+        <Label fx:id="lblEdicao" text="Edição:" GridPane.columnIndex="0" GridPane.rowIndex="6" visible="false"/>
+        <TextField fx:id="txtEdicao" GridPane.columnIndex="1" GridPane.rowIndex="6" visible="false"/>
+
+        <Label fx:id="lblLocal" text="Local:" GridPane.columnIndex="0" GridPane.rowIndex="7" visible="false"/>
+        <TextField fx:id="txtLocal" GridPane.columnIndex="1" GridPane.rowIndex="7" visible="false"/>
+    </GridPane>
+
+    <HBox alignment="CENTER" spacing="20.0">
+        <Button mnemonicParsing="false" onAction="#salvarItem" text="Salvar Item" style="-fx-font-weight: bold; -fx-text-fill: white; -fx-background-color: green;"/>
+        <Button mnemonicParsing="false" onAction="#voltar" text="Cancelar e Voltar" style="-fx-text-fill: red;"/>
+    </HBox>
+
+</VBox>

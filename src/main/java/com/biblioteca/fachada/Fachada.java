@@ -116,4 +116,8 @@ public class Fachada {
         this.controladorEmprestimo.perdoarMulta(emprestimo);
     }
 
+    public void cadastrarItemAcervo(Acervo item) throws Exception {
+        this.controladorAcervo.cadastrarItem(item);
+    }
+
 }

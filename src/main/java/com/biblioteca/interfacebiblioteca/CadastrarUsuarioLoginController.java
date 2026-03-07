@@ -107,8 +107,10 @@ public class CadastrarUsuarioLoginController {
     }
 
     @FXML
-    private void voltar() throws Exception {
-        MainApp.carregarTela("login.fxml", "Tela de login");
+    private void voltar() {
+        // Como é um popup, "voltar" significa apenas fechar esta janela!
+        javafx.stage.Stage stage = (javafx.stage.Stage) txtNome.getScene().getWindow();
+        stage.close();
     }
 }
 

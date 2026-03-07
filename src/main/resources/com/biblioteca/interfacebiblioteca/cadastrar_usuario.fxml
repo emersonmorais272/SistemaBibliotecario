@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="500.0" prefWidth="600.0" spacing="15.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biblioteca.interfacebiblioteca.CadastrarUsuarioController">
+<VBox alignment="CENTER" prefHeight="500.0" prefWidth="600.0" spacing="15.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.biblioteca.interfacebiblioteca.CadastrarUsuarioLoginController">
 
     <Label text="Cadastrar Novo Usuário">
         <font>
