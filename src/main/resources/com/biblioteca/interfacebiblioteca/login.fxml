@@ -16,8 +16,8 @@
       <cursor>
          <Cursor fx:constant="TEXT" />
       </cursor></PasswordField>
-   <Hyperlink fx:id="linkCadastrar" onAction="#abrirTelaCadastro" text="Nâo possui conta? Cadastrar" textFill="RED" />
-    <Hyperlink text="Caso seja funcionário, clique aqui" onAction="#abrirTelaAcessoFuncionario" textFill="BLUE"/>
+   <Hyperlink fx:id="linkCadastrar" onAction="#abrirTelaCadastro" text="Cadastro Aluno/Professor" textAlignment="CENTER" textFill="RED" />
+    <Hyperlink onAction="#abrirTelaAcessoFuncionario" text="Cadastro Funcionário(Acesso restrito)" textAlignment="CENTER" textFill="BLUE" />
 
     <Button onAction="#entrar" text="Entrar">
       <cursor>
