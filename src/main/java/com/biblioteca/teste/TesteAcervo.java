@@ -38,8 +38,7 @@ public class TesteAcervo {
             }
 
         } catch (Exception e) {
-            // Se você rodar o teste duas vezes sem apagar o arquivo,
-            // ele vai cair aqui porque o código já existe!
+
             System.err.println("Erro no teste: " + e.getMessage());
         }
     }
