@@ -14,14 +14,14 @@ public class AcessoFuncionarioController {
         String digitado = txtCodigoSecreto.getText();
 
         if (digitado.equals("2112")) {
-            // Se acertou: Fecha essa telinha de senha
+
             Stage stage = (Stage) txtCodigoSecreto.getScene().getWindow();
             stage.close();
 
-            // E abre a telinha exclusiva para cadastrar funcionário
+
             MainApp.abrirPopup("cadastrar_funcionario_login.fxml", "Cadastro de Funcionário");
         } else {
-            // Se errou: Mostra o erro
+
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Acesso Negado");
             alert.setHeaderText(null);
@@ -32,7 +32,7 @@ public class AcessoFuncionarioController {
 
     @FXML
     private void voltar() {
-        // Apenas fecha o popup e volta para o login que está no fundo
+
         Stage stage = (Stage) txtCodigoSecreto.getScene().getWindow();
         stage.close();
     }

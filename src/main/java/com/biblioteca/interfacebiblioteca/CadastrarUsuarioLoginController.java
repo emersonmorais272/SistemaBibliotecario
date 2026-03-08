@@ -17,7 +17,7 @@ public class CadastrarUsuarioLoginController {
     @FXML private TextField txtCpf;
     @FXML private TextField txtAnoNascimento;
 
-    // Campos dinâmicos
+
     @FXML private Label lblCampo1;
     @FXML private TextField txtCampo1;
     @FXML private Label lblCampo2;
@@ -76,7 +76,7 @@ public class CadastrarUsuarioLoginController {
         }
 
         try {
-            // Repassa os dados para a fachada dependendo de quem está sendo cadastrado
+
             if (tipo.equals("Aluno")) {
                 String matricula = txtCampo1.getText();
                 String curso = txtCampo2.getText();

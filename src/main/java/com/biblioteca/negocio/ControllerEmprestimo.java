@@ -31,13 +31,13 @@ public class ControllerEmprestimo {
         LocalDate prevista = emprestimo.getDataPrevistaDevolucao();
         double multaTotal = 0;
 
-        // Comparação correta de atraso
+
         if (hoje.isAfter(prevista) && !emprestimo.isMultaPerdoada()) {
             long diasAtraso = java.time.temporal.ChronoUnit.DAYS.between(prevista, hoje);
             multaTotal = emprestimo.getUsuario().calcularMulta(diasAtraso);
         }
 
-        // Atualiza o estado do item antes de remover o registro
+
         emprestimo.getItem().setDisponivel(true);
         this.repoEmprestimo.remover(emprestimo);
 
@@ -49,7 +49,7 @@ public class ControllerEmprestimo {
             throw new ItemIndisponivelException("O item selecionado não está disponível.");
         }
 
-        // A regra de negócio (prazo) é extraída do usuário pelo controlador
+
         int prazo = usuario.getPrazoEmprestimo();
         Emprestimo emprestimo = new Emprestimo(usuario, item, prazo);
 

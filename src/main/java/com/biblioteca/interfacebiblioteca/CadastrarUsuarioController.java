@@ -15,7 +15,7 @@ public class CadastrarUsuarioController {
     @FXML private TextField txtCpf;
     @FXML private TextField txtAnoNascimento;
 
-    // Campos dinâmicos
+
     @FXML private Label lblCampo1;
     @FXML private TextField txtCampo1;
     @FXML private Label lblCampo2;
@@ -25,10 +25,10 @@ public class CadastrarUsuarioController {
 
     @FXML
     public void initialize() {
-        // Preenche as opções da caixa de seleção
+
         comboTipoUsuario.setItems(FXCollections.observableArrayList("Aluno", "Professor", "Funcionário"));
 
-        // Fica "escutando" as mudanças na caixa de seleção para trocar os campos na tela
+
         comboTipoUsuario.getSelectionModel().selectedItemProperty().addListener((observable, valorAntigo, valorNovo) -> {
             atualizarCamposDinamicos(valorNovo);
         });
@@ -37,7 +37,7 @@ public class CadastrarUsuarioController {
     private void atualizarCamposDinamicos(String tipo) {
         if (tipo == null) return;
 
-        // Limpa os campos sempre que trocar o tipo
+
         txtCampo1.clear();
         txtCampo2.clear();
 
@@ -74,7 +74,7 @@ public class CadastrarUsuarioController {
         }
 
         try {
-            // Repassa os dados para a fachada dependendo de quem está sendo cadastrado
+
             if (tipo.equals("Aluno")) {
                 String matricula = txtCampo1.getText();
                 String curso = txtCampo2.getText();
@@ -90,7 +90,7 @@ public class CadastrarUsuarioController {
             }
 
             mostrarAlerta(Alert.AlertType.INFORMATION, "Sucesso", tipo + " cadastrado com sucesso!");
-            voltar(); // Volta para a tabela automaticamente após salvar
+            voltar();
 
         } catch (NumberFormatException e) {
             mostrarAlerta(Alert.AlertType.ERROR, "Erro de Formato", "O código de acesso deve conter apenas números.");

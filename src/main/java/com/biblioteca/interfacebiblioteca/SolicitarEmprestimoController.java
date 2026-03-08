@@ -50,7 +50,7 @@ public class SolicitarEmprestimoController {
         List<Acervo> todoAcervo = fachada.listarAcervo();
 
         if (todoAcervo != null) {
-            // Filtra a lista para mostrar APENAS o que está disponível
+
             List<Acervo> disponiveis = todoAcervo.stream()
                     .filter(Acervo::isDisponivel)
                     .collect(Collectors.toList());
@@ -62,7 +62,7 @@ public class SolicitarEmprestimoController {
 
     @FXML
     private void confirmarEmprestimo() {
-        // Descobre qual item o usuário clicou na tabela
+
         Acervo itemSelecionado = tabelaAcervo.getSelectionModel().getSelectedItem();
         Usuario usuarioLogado = MainApp.getUsuarioLogado();
 
@@ -77,13 +77,13 @@ public class SolicitarEmprestimoController {
         }
 
         try {
-            // Chama a lógica de negócio que você já tinha construído
+
             fachada.realizarEmprestimo(usuarioLogado, itemSelecionado);
 
             mostrarAlerta(Alert.AlertType.INFORMATION, "Sucesso",
                     "Empréstimo realizado! Devolva em " + usuarioLogado.getPrazoEmprestimo() + " dias.");
 
-            // Recarrega a tabela para o item sumir da lista de disponíveis
+
             carregarAcervoDisponivel();
 
         } catch (Exception e) {

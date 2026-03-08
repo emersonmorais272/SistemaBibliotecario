@@ -65,7 +65,7 @@ public class DevolverItemController {
         try {
             String cpfUsuario = MainApp.getUsuarioLogado().getCPF();
 
-            // Chama a sua regra de negócio que calcula a multa
+
             double multa = fachada.finalizarDevolucao(cpfUsuario);
 
             if (multa > 0) {
@@ -76,7 +76,7 @@ public class DevolverItemController {
                         "Item devolvido com sucesso! Nenhuma multa foi gerada.");
             }
 
-            // Atualiza a tabela para remover o item devolvido
+
             carregarDados();
 
         } catch (Exception e) {

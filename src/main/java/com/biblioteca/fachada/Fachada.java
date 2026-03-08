@@ -101,7 +101,7 @@ public class Fachada {
 
 
     public Emprestimo realizarEmprestimo(Usuario usuario, Acervo item) {
-        // A fachada apenas solicita a operação; o Controller aplica prazos e validações
+
         return this.controladorEmprestimo.realizarEmprestimo(usuario, item);
     }
 

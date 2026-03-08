@@ -15,7 +15,7 @@ import java.awt.event.ActionEvent;
 public class LoginController {
 
     public Hyperlink linkCadastrar;
-    @FXML private TextField txtUsuario; // vamo usar para o CPF
+    @FXML private TextField txtUsuario;
 
     private Fachada fachada = Fachada.getInstance();
 
@@ -51,7 +51,7 @@ public class LoginController {
     }
     @FXML
     public void abrirTelaAcessoFuncionario(javafx.event.ActionEvent actionEvent) {
-        // Abre a tela do código secreto como um Popup
+
         MainApp.abrirPopup("acesso_funcionario.fxml", "Acesso Restrito - Funcionário");
     }
 
