@@ -121,6 +121,7 @@ public class AcervoController {
                     "Erro",
                     e.getMessage());
         }
+        tabelaAcervo.refresh();
     }
 
     @FXML
