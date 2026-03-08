@@ -72,7 +72,7 @@ public class EmprestimosUsuarioController {
         List<Emprestimo> todos = fachada.listarEmprestimos();
 
         if (todos != null) {
-            // Filtra os empréstimos para mostrar só os do usuário que estamos inspecionando
+
             List<Emprestimo> doUsuario = todos.stream()
                     .filter(e -> e.getUsuario().getCPF().equals(inspecionado.getCPF()))
                     .collect(Collectors.toList());
@@ -84,7 +84,7 @@ public class EmprestimosUsuarioController {
 
     @FXML
     private void voltar() throws Exception {
-        // Limpa a memória e volta para a tela de gerenciamento
+
         MainApp.setUsuarioInspecionado(null);
         MainApp.carregarTela("usuario.fxml", "Gerenciar Usuários");
     }
@@ -110,6 +110,6 @@ public class EmprestimosUsuarioController {
         Alert alert = new Alert(Alert.AlertType.INFORMATION, "Multa perdoada com sucesso!");
         alert.showAndWait();
 
-        tabelaEmprestimos.refresh(); // Atualiza a tabela instantaneamente (vai zerar o valor)
+        tabelaEmprestimos.refresh();
     }
 }

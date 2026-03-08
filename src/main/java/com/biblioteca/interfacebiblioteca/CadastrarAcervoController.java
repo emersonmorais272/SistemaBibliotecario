@@ -15,11 +15,11 @@ public class CadastrarAcervoController {
     @FXML private ComboBox<String> comboTipo;
     @FXML private TextField txtTitulo, txtAutor, txtCodigo, txtQtd;
 
-    // Campos Livro
+
     @FXML private Label lblIsbn;
     @FXML private TextField txtIsbn;
 
-    // Campos Artigo
+
     @FXML private Label lblMes, lblEdicao, lblLocal;
     @FXML private TextField txtMes, txtEdicao, txtLocal;
 
@@ -29,7 +29,7 @@ public class CadastrarAcervoController {
     public void initialize() {
         comboTipo.setItems(FXCollections.observableArrayList("Livro", "Artigo"));
 
-        // Listener para trocar os campos na tela quando o usuário escolher Livro ou Artigo
+
         comboTipo.getSelectionModel().selectedItemProperty().addListener((obs, antigo, novo) -> {
             atualizarCampos(novo);
         });

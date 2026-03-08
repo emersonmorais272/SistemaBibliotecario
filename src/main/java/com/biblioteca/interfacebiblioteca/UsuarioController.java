@@ -23,7 +23,7 @@ public class UsuarioController {
     @FXML private TableColumn<Usuario, String> colNome;
     @FXML private TableColumn<Usuario, String> colCpf;
     @FXML private TableColumn<Usuario, Number> colIdade;
-    @FXML private TableColumn<Usuario, String> colMulta; // Nova coluna
+    @FXML private TableColumn<Usuario, String> colMulta;
 
     private Fachada fachada = Fachada.getInstance();
 
@@ -46,7 +46,7 @@ public class UsuarioController {
         colIdade.setCellValueFactory(cellData ->
                 new SimpleIntegerProperty(cellData.getValue().getIdade()));
 
-        // Calcula a soma das multas pendentes de cada usuário
+
         colMulta.setCellValueFactory(cellData -> {
             Usuario u = cellData.getValue();
             List<Emprestimo> todosEmprestimos = fachada.listarEmprestimos();
@@ -120,7 +120,7 @@ public class UsuarioController {
             return;
         }
 
-        // Salva o usuário clicado na memória e abre a nova tela
+
         MainApp.setUsuarioInspecionado(selecionado);
         MainApp.carregarTela("emprestimos_usuario.fxml", "Empréstimos de " + selecionado.getNome());
     }

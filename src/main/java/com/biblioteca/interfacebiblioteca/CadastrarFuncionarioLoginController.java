@@ -23,13 +23,13 @@ public class CadastrarFuncionarioLoginController {
             String ano = txtAnoNascimento.getText();
             int cod = Integer.parseInt(txtCodigoAcesso.getText());
 
-            // Envia para o banco de dados/arquivo
+
             fachada.cadastrarFuncionario(nome, cpf, ano, cod);
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "Funcionário cadastrado com sucesso!");
             alert.showAndWait();
 
-            // Fecha a janela de cadastro após o sucesso
+
             Stage stage = (Stage) txtNome.getScene().getWindow();
             stage.close();
 
