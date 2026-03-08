@@ -61,7 +61,7 @@ public class Emprestimo implements Serializable {
     public LocalDate getDataDevolucao() {
         return dataDevolucao;
     }
-    // Adicione os 3 itens abaixo:
+
     private boolean multaPerdoada = false;
 
     public boolean isMultaPerdoada() {

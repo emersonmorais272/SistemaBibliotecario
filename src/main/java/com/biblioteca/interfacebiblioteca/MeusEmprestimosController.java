@@ -43,13 +43,11 @@ public class MeusEmprestimosController {
         colDataDev.setCellValueFactory(cellData ->
                 new SimpleStringProperty(cellData.getValue().getDataPrevistaDevolucao().format(formatador)));
 
-        // A MÁGICA DO PERDÃO ACONTECE AQUI
         colMulta.setCellValueFactory(cellData -> {
             Emprestimo e = cellData.getValue();
             java.time.LocalDate hoje = java.time.LocalDate.now();
             double multaAtual = 0.0;
 
-            // Só calcula a multa se estiver atrasado E a multa NÃO tiver sido perdoada!
             if (hoje.isAfter(e.getDataPrevistaDevolucao()) && !e.isMultaPerdoada()) {
                 long diasAtraso = java.time.temporal.ChronoUnit.DAYS.between(e.getDataPrevistaDevolucao(), hoje);
                 multaAtual = e.getUsuario().calcularMulta(diasAtraso);
