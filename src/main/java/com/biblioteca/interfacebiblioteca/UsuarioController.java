@@ -25,6 +25,7 @@ public class UsuarioController {
     @FXML private TableColumn<Usuario, Number> colIdade;
     @FXML private TableColumn<Usuario, String> colMulta;
 
+
     private Fachada fachada = Fachada.getInstance();
 
     @FXML
@@ -46,7 +47,7 @@ public class UsuarioController {
         colIdade.setCellValueFactory(cellData ->
                 new SimpleIntegerProperty(cellData.getValue().getIdade()));
 
-
+        // SOMA DAS MULTAS COM A VERIFICAÇÃO DO PERDÃO
         colMulta.setCellValueFactory(cellData -> {
             Usuario u = cellData.getValue();
             List<Emprestimo> todosEmprestimos = fachada.listarEmprestimos();
@@ -55,9 +56,11 @@ public class UsuarioController {
             if (todosEmprestimos != null) {
                 for (Emprestimo e : todosEmprestimos) {
                     if (e.getUsuario().getCPF().equals(u.getCPF())) {
-                        LocalDate hoje = LocalDate.now();
-                        if (hoje.isAfter(e.getDataPrevistaDevolucao())) {
-                            long diasAtraso = ChronoUnit.DAYS.between(e.getDataPrevistaDevolucao(), hoje);
+                        java.time.LocalDate hoje = java.time.LocalDate.now();
+
+                        // Só soma a multa se estiver atrasado E a multa NÃO tiver sido perdoada
+                        if (hoje.isAfter(e.getDataPrevistaDevolucao()) && !e.isMultaPerdoada()) {
+                            long diasAtraso = java.time.temporal.ChronoUnit.DAYS.between(e.getDataPrevistaDevolucao(), hoje);
                             multaTotal += u.calcularMulta(diasAtraso);
                         }
                     }

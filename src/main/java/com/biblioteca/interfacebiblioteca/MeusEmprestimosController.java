@@ -21,7 +21,8 @@ public class MeusEmprestimosController {
     @FXML private TableColumn<Emprestimo, String> colTitulo;
     @FXML private TableColumn<Emprestimo, String> colDataEmp;
     @FXML private TableColumn<Emprestimo, String> colDataDev;
-    @FXML private TableColumn<Emprestimo, String> colMulta; // Nova coluna
+    @FXML private TableColumn<Emprestimo, String> colMulta;
+
 
     private Fachada fachada = Fachada.getInstance();
     private DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -42,14 +43,15 @@ public class MeusEmprestimosController {
         colDataDev.setCellValueFactory(cellData ->
                 new SimpleStringProperty(cellData.getValue().getDataPrevistaDevolucao().format(formatador)));
 
-        // Calcula a multa em tempo real
+        // A MÁGICA DO PERDÃO ACONTECE AQUI
         colMulta.setCellValueFactory(cellData -> {
             Emprestimo e = cellData.getValue();
-            LocalDate hoje = LocalDate.now();
+            java.time.LocalDate hoje = java.time.LocalDate.now();
             double multaAtual = 0.0;
 
-            if (hoje.isAfter(e.getDataPrevistaDevolucao())) {
-                long diasAtraso = ChronoUnit.DAYS.between(e.getDataPrevistaDevolucao(), hoje);
+            // Só calcula a multa se estiver atrasado E a multa NÃO tiver sido perdoada!
+            if (hoje.isAfter(e.getDataPrevistaDevolucao()) && !e.isMultaPerdoada()) {
+                long diasAtraso = java.time.temporal.ChronoUnit.DAYS.between(e.getDataPrevistaDevolucao(), hoje);
                 multaAtual = e.getUsuario().calcularMulta(diasAtraso);
             }
 
