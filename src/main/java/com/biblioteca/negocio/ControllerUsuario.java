@@ -140,17 +140,28 @@ public class ControllerUsuario {
         VerificacaoAluno(Matricula, Curso);
         Usuario U = this.repoUsuario.Buscar(CPF);
         U = new Aluno(Nome, U.getCPF(), anoNascimento, Matricula, Curso);
+        U.setIdade(2026 - Integer.parseInt(anoNascimento));
         this.repoUsuario.Atualizar(U);
     }
 
-    public void Atualizar(String Nome, String CPF,  String anoNascimento, int codigoAcesso){
-        VerificacaoUsuario(Nome, CPF, anoNascimento);
+    public void Atualizar(String CPF, String Nome,  String anoNascimento, int codigoAcesso){
+        if(this.repoUsuario.Buscar(CPF) == null){
+            throw new UsuarioNaoEncontradoException("Usuario nao encontrado");
+        }
+
+        if (MetodosAuxiliares.temNumero(Nome) || Nome.isBlank()) {
+            throw new FormatoInvalidoException("O nome é formado apenas por letras");
+        }
+
+        VerificacaoIdade(anoNascimento);
+
         if(String.valueOf(codigoAcesso).length() != 8)
             throw new TamanhoInvalidoException("A senha deve conter 8 caracteres");
 
-        Usuario u = new Funcionario(codigoAcesso, Nome, CPF, anoNascimento);
-        u.setIdade(2026 - Integer.parseInt(anoNascimento));
-        this.repoUsuario.Atualizar(u);
+        Usuario U = this.repoUsuario.Buscar(CPF);
+        U = new Funcionario(codigoAcesso, Nome, U.getCPF(), anoNascimento);
+        U.setIdade(2026 - Integer.parseInt(anoNascimento));
+        this.repoUsuario.Atualizar(U);
 
     }
 
@@ -173,6 +184,7 @@ public class ControllerUsuario {
 
         Usuario U = this.repoUsuario.Buscar(CPF);
         U = new Professor(Nome, U.getCPF(), anoNascimento, siape);
+        U.setIdade(2026 - Integer.parseInt(anoNascimento));
         this.repoUsuario.Atualizar(U);
     }
 
